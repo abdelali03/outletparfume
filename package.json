@@ -19,6 +19,10 @@
     "reselect": "^5.1.1",
     "web-vitals": "^2.1.4"
   },
+  "engines": {
+    "node": "22.2.0",
+    "npm": "10.7.0"
+  },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
