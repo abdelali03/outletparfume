@@ -13,10 +13,10 @@ const config = {
 };
 
 const app = initializeApp(config);
-export const auth = getAuth(app);
-export const firestore = getFirestore(app);
+const auth = getAuth(app);
+const firestore = getFirestore(app);
 
-export const createUserProfileDocument = async (userAuth, additionalData) => {
+const createUserProfileDocument = async (userAuth, additionalData) => {
   if (!userAuth) return;
 
   const userRef = doc(firestore, `users/${userAuth.uid}`);
@@ -30,10 +30,11 @@ export const createUserProfileDocument = async (userAuth, additionalData) => {
         displayName,
         email,
         createdAt,
+        role: "user", // Default role
         ...additionalData,
       });
     } catch (error) {
-      console.log("error creating user", error.message);
+      console.log("Error creating user", error.message);
     }
   }
   return userRef;
@@ -42,4 +43,12 @@ export const createUserProfileDocument = async (userAuth, additionalData) => {
 const provider = new GoogleAuthProvider();
 provider.setCustomParameters({ prompt: "select_account" });
 
-export const signInWithGoogle = () => signInWithPopup(auth, provider);
+const signInWithGoogle = () => signInWithPopup(auth, provider);
+
+export {
+  auth,
+  firestore,
+  createUserProfileDocument,
+  signInWithGoogle,
+  firestore as db, // Ensure db is exported
+};

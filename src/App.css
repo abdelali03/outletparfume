@@ -1,13 +1,146 @@
 body {
-  font-family: "Open Sans Condensed";
-  padding: 20px 60px;
+  font-family: "Open Sans Condensed", sans-serif;
+  background: linear-gradient(135deg, #fce4ec, #f8bbd0);
+  color: #5a5a5a;
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 1rem; /* Use relative font size */
 }
 
+/* Reset links */
 a {
   text-decoration: none;
-  color: black;
+  color: #d81b60;
+  transition: color 0.3s ease;
 }
 
+a:hover {
+  color: #b71c1c;
+}
+
+/* Ensure all elements use border-box */
 * {
   box-sizing: border-box;
+}
+
+header {
+  width: 100%;
+  background: white;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 10px 5vw; /* Use viewport width for responsive padding */
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Footer */
+footer {
+  width: 100%;
+  background: #f8bbd0;
+  color: white;
+  text-align: center;
+  padding: 20px 5vw;
+  margin-top: auto;
+  font-size: 0.875rem;
+  box-shadow: 0 -4px 6px rgba(0, 0, 0, 0.1);
+}
+
+button {
+  font-family: inherit;
+  font-size: 1rem;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 30px;
+  background-color: #e9a3b0;
+  color: white;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+button:hover {
+  background-color: #d81b60;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+input,
+textarea {
+  font-family: inherit;
+  font-size: 1rem;
+  padding: 10px;
+  border: 2px solid #e9a3b0;
+  border-radius: 10px;
+  outline: none;
+  transition: all 0.3s ease;
+  width: 100%;
+  max-width: 400px; /* Limit the width for large screens */
+}
+
+input:focus,
+textarea:focus {
+  border-color: #d81b60;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* =================== */
+/* RESPONSIVE QUERIES */
+/* =================== */
+
+@media screen and (max-width: 768px) {
+  body {
+    font-size: 0.95rem;
+    padding: 0 3vw;
+  }
+
+  header,
+  footer {
+    padding: 10px 4vw;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  button {
+    font-size: 0.95rem;
+    padding: 8px 16px;
+  }
+
+  input,
+  textarea {
+    max-width: 100%;
+    font-size: 0.95rem;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  body {
+    font-size: 0.9rem;
+    align-items: stretch;
+  }
+
+  header,
+  footer {
+    padding: 8px 5vw;
+  }
+
+  footer {
+    font-size: 0.8rem;
+  }
+
+  button {
+    font-size: 0.9rem;
+    padding: 6px 12px;
+  }
+
+  input,
+  textarea {
+    font-size: 0.9rem;
+    padding: 8px;
+  }
 }

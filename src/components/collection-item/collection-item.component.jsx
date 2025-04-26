@@ -3,8 +3,10 @@ import "./collection-item.style.scss";
 import CustomButton from "../custom-button/custom-button.component";
 import { connect } from "react-redux";
 import { addItem } from "../../redux/cart/cart.actions";
+
 const CollectionItem = ({ item, addItem }) => {
-  const { name, price, imageUrl } = item;
+  const { name, price, imageUrl, quantity } = item; // Ensure `quantity` is part of the item object.
+
   return (
     <div className="collection-item">
       <div
@@ -17,10 +19,13 @@ const CollectionItem = ({ item, addItem }) => {
         <span className="name">{name}</span>
         <span className="price">${price}</span>
       </div>
-      <CustomButton onClick={() => addItem(item)} inverted>
-        {" "}
-        Add to Cart
-      </CustomButton>
+      {quantity === 0 ? (
+        <div className="out-of-stock">Out of Stock</div> // Display "Out of Stock" if quantity is 0.
+      ) : (
+        <CustomButton onClick={() => addItem(item)} inverted>
+          Add to Cart
+        </CustomButton>
+      )}
     </div>
   );
 };

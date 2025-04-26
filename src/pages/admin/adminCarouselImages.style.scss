@@ -1,0 +1,90 @@
+.admin-carousel-images {
+  max-width: 800px;
+  margin: 20px auto;
+  padding: 20px;
+  text-align: center;
+
+  h2 {
+    margin-bottom: 20px;
+    font-size: 1.8rem;
+    color: #333;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+
+    th,
+    td {
+      padding: 10px;
+      border: 1px solid #ccc;
+      text-align: left;
+    }
+
+    input[type="text"] {
+      width: 100%;
+      padding: 5px;
+    }
+
+    button {
+      padding: 5px 10px;
+      background-color: #d4af37;
+      border: none;
+      border-radius: 4px;
+      color: #fff;
+      cursor: pointer;
+      transition: background 0.3s;
+
+      &:hover {
+        background-color: #b6932e;
+      }
+    }
+  }
+
+  // ✅ Media Query für kleinere Bildschirme
+  @media (max-width: 768px) {
+    padding: 10px;
+
+    h2 {
+      font-size: 1.5rem;
+    }
+
+    table,
+    thead,
+    tbody,
+    th,
+    td,
+    tr {
+      display: block;
+      width: 100%;
+    }
+
+    thead {
+      display: none; // optional: Tabellenkopf ausblenden
+    }
+
+    tr {
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      padding: 10px;
+      border-radius: 6px;
+      background-color: #f9f9f9;
+    }
+
+    td {
+      text-align: right;
+      position: relative;
+      padding-left: 50%;
+    }
+
+    td::before {
+      content: attr(data-label); // über `data-label` setzen
+      position: absolute;
+      left: 10px;
+      top: 10px;
+      font-weight: bold;
+      white-space: nowrap;
+    }
+  }
+}

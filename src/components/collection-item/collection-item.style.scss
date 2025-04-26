@@ -1,49 +1,116 @@
 .collection-item {
   width: 22vw;
+  height: 350px;
   display: flex;
   flex-direction: column;
-  height: 350px;
   align-items: center;
   position: relative;
+  overflow: hidden;
+  background: #b11010; /* Soft white background for contrast */
+  border: 1px solid #ecbdc6; /* Rose pink border */
+  border-radius: 15px; /* Rounded corners for elegance */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+  &:hover {
+    transform: translateY(-5px); /* Slight lift on hover */
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2); /* Enhanced shadow on hover */
+
+    .image {
+      opacity: 0.9; /* Slightly dim the image on hover */
+    }
+
+    .custom-button {
+      opacity: 1;
+      transform: translate(-50%, -50%);
+      pointer-events: auto;
+    }
+  }
 
   .image {
     width: 100%;
     height: 95%;
     background-size: cover;
     background-position: center;
-    margin-bottom: 5px;
+    border-bottom: 1px solid #ecbdc6; /* Rose pink divider */
+    transition: opacity 0.3s ease, transform 0.3s ease;
+
+    &:hover {
+      transform: scale(1.05); /* Slight zoom effect on hover */
+    }
   }
 
   .custom-button {
-    width: 80%;
-    opacity: 0.7;
     position: absolute;
-    top: 255px;
-    display: none;
-  }
-  &:hover {
-    .image {
-      opacity: 0.8;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    background-color: rgba(216, 27, 96, 0.9); /* Semi-transparent rose pink */
+    color: white;
+    border: none;
+    border-radius: 30px;
+    padding: 12px 25px;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    pointer-events: none;
+
+    &:hover {
+      background-color: #b71c1c; /* Darker red on hover */
     }
-    .custom-button {
-      opacity: 0.85;
-      display: flex;
-    }
   }
+
   .collection-footer {
     width: 100%;
-    height: 5%;
+    height: auto;
     display: flex;
     justify-content: space-between;
-    font-size: 18px;
+    align-items: center;
+    padding: 10px 15px;
+    background: #f6d9d2; /* Light pink background for footer */
+    border-top: 1px solid #ecbdc6; /* Rose pink divider */
+    font-size: 16px;
 
     .name {
-      width: 90%;
-      margin-bottom: 15px;
+      width: 80%;
+      font-size: 1rem;
+      font-weight: bold;
+      color: #4a4a4a; /* Neutral dark gray for text */
+      text-overflow: ellipsis;
+      overflow: hidden;
+      white-space: nowrap; /* Prevent text wrapping */
     }
 
     .price {
-      width: 10%;
+      width: 20%;
+      font-size: 1rem;
+      font-weight: bold;
+      color: #d8a9c1; /* Light pink-purple for price */
+      text-align: right;
     }
+  }
+
+  /* Styling for "Out of Stock" */
+  .out-of-stock {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(
+      255,
+      0,
+      0,
+      0.8
+    ); /* Red background with transparency */
+    color: white;
+    padding: 10px 20px;
+    font-size: 18px;
+    font-weight: bold;
+    border-radius: 5px;
+    text-align: center; /* Center the text inside the box */
+    z-index: 2; /* Ensure it's above other elements */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Add shadow for emphasis */
   }
 }

@@ -14,13 +14,15 @@ const Header = ({ currentUser, hidden }) => (
     <Link to="/" className="logo-container">
       <Logo className="logo" />
     </Link>
+
     <div className="options">
       <Link className="option" to="/shop">
-        Shop
+        <span role="img" aria-label="search">
+          🔍
+        </span>
       </Link>
-      <Link className="option" to="/contact">
-        Contact
-      </Link>
+      <CartIcon />
+
       {currentUser ? (
         <div className="option" onClick={() => auth.signOut()}>
           SIGN OUT
@@ -30,7 +32,13 @@ const Header = ({ currentUser, hidden }) => (
           SIGN IN
         </Link>
       )}
-      <CartIcon />
+      {currentUser && currentUser.currentUser.role === "admin" ? (
+        <Link className="option" to="/admin">
+          Admin
+        </Link>
+      ) : (
+        ""
+      )}
     </div>
     {hidden ? null : <CartDropdown />}
   </div>

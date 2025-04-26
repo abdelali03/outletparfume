@@ -1,0 +1,79 @@
+.preisliste-page {
+  max-width: 800px;
+  margin: auto;
+  padding: 30px 20px;
+  text-align: center;
+  background: linear-gradient(
+    135deg,
+    #f6d9d2,
+    #ecbdc6
+  ); /* Soft pink gradient background */
+  border-radius: 15px; /* Rounded corners for elegance */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+
+  .title {
+    font-size: 2.2rem;
+    margin-bottom: 30px;
+    font-weight: bold;
+    color: #9283a9; /* Neutral purple for the title */
+    text-transform: uppercase;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
+  }
+
+  .preisliste-tabelle {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+    font-family: "Open Sans", sans-serif; /* Elegant font for the table */
+
+    th,
+    td {
+      border: 1px solid #ddd;
+      padding: 15px;
+      font-size: 1rem;
+      text-align: left;
+      color: #4a4a4a; /* Neutral dark gray for text */
+    }
+
+    th {
+      background-color: #d8a9c1; /* Light pink-purple for header */
+      color: #fff; /* White text for contrast */
+      font-size: 1.1rem;
+      text-transform: uppercase;
+    }
+
+    tbody tr:nth-child(even) {
+      background-color: #f9f9f9; /* Light gray for alternating rows */
+    }
+
+    tbody tr:nth-child(odd) {
+      background-color: #ffffff; /* White for alternating rows */
+    }
+
+    tbody tr:hover {
+      background-color: #f6d9d2; /* Highlight row on hover */
+      transition: background-color 0.3s ease;
+    }
+
+    .brand-name {
+      font-weight: bold;
+      font-size: 1.1rem;
+      color: #d81b60; /* Rose pink for brand names */
+    }
+
+    .price {
+      font-weight: bold;
+      font-size: 1.1rem;
+      color: #4a4a4a; /* Neutral dark gray for prices */
+    }
+  }
+
+  .footer-note {
+    margin-top: 20px;
+    font-weight: bold;
+    color: #444;
+    font-style: italic;
+    font-size: 1rem;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  }
+}

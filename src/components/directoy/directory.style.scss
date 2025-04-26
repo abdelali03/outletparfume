@@ -1,6 +1,141 @@
 .directory-menu {
-  width: 100%;
+  background: linear-gradient(
+    135deg,
+    #fce4ec,
+    #f8bbd0
+  ); /* Soft pink gradient background */
+  min-height: 100vh; /* Ensure the page covers the full viewport height */
+  padding: 20px;
   display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
+  flex-direction: column;
+  align-items: center;
+  > .full-width-wrapper {
+    width: 100%;
+    max-width: 1200px; // Match your header and grid max-width
+    margin-bottom: 20px; // Optional spacing between Kosmetics and grid
+    align-self: stretch; // Override parent's center alignment
+  }
+
+  .directory-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    max-width: 1200px;
+    margin-bottom: 30px;
+
+    .header-title {
+      font-size: 18px;
+      font-weight: bold;
+
+      color: #d81b60; /* Dark rose pink */
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2); /* Subtle shadow for text */
+      margin: 0;
+    }
+
+    .search-bar-container {
+      position: relative;
+      width: 150%;
+      max-width: 600px;
+
+      .search-bar {
+        display: flex;
+        align-items: center;
+
+        .search-input {
+          width: 250%;
+          padding: 12px;
+          border: 2px solid #e9a3b0;
+          border-radius: 30px;
+          font-size: 16px;
+          outline: none;
+          box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+          transition: all 0.3s ease;
+
+          &:focus {
+            border-color: #d81b60; /* Darker rose pink on focus */
+            box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+          }
+        }
+
+        .search-button {
+          margin-left: 10px;
+          padding: 10px 20px;
+          background-color: #e9a3b0;
+          color: white;
+          border: none;
+          border-radius: 30px;
+          font-size: 16px;
+          cursor: pointer;
+          box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+          transition: all 0.3s ease;
+
+          &:hover {
+            background-color: #d81b60; /* Darker rose pink on hover */
+            box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+          }
+        }
+      }
+
+      .suggestions-list {
+        position: absolute;
+        top: 82px;
+        left: 0;
+        right: 0;
+        background: linear-gradient(
+          135deg,
+          #fce4ec,
+          #f8bbd0
+        ); /* Soft pink gradient */
+        border: 1px solid #e9a3b0;
+        border-radius: 15px;
+        list-style: none;
+        margin: 0;
+        padding: 10px 0;
+        z-index: 1000;
+        box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+
+        .suggestion-item {
+          padding: 12px 20px;
+          cursor: pointer;
+          font-size: 16px;
+          color: #5a5a5a;
+          transition: background-color 0.3s ease, color 0.3s ease,
+            transform 0.2s ease;
+          border-bottom: 1px solid rgba(233, 163, 176, 0.3);
+
+          &:hover {
+            background-color: #f8bbd0;
+            color: #d81b60;
+            transform: scale(1.02);
+          }
+
+          &:last-child {
+            border-bottom: none;
+          }
+        }
+      }
+    }
+  }
+
+  .menu-items {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    width: 100%;
+    max-width: 1200px;
+
+    .menu-item {
+      background: white;
+      border-radius: 15px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+      &:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+      }
+    }
+  }
 }

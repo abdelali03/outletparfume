@@ -4,6 +4,9 @@ import FormInput from "../form-input/form-input.component";
 import CustomButton from "../custom-button/custom-button.component";
 import { auth, signInWithGoogle } from "../../firebase/firebase.utils";
 import { signInWithEmailAndPassword } from "firebase/auth"; // Import for Firebase v9
+import { doc, getDoc } from "firebase/firestore";
+import { db } from "../../firebase/firebase.utils.js";
+import { withRouter } from "react-router-dom";
 
 class SignIn extends React.Component {
   constructor(props) {
@@ -14,16 +17,29 @@ class SignIn extends React.Component {
     };
   }
 
-  handlesubmit = async (event) => {
+  handleSubmit = async (event) => {
     event.preventDefault();
     const { email, password } = this.state;
 
     try {
-      // Use Firebase v9 syntax
-      await signInWithEmailAndPassword(auth, email, password);
-      this.setState({ email: "", password: "" });
+      const { user } = await signInWithEmailAndPassword(auth, email, password);
+      console.log("User signed in:", user);
+      const userRef = doc(db, "users", user.uid);
+      const snapShot = await getDoc(userRef);
+
+      if (snapShot.exists()) {
+        const userData = snapShot.data();
+        console.log("User data:", userData);
+        if (userData.role === "admin") {
+          this.props.history.push("/admin"); // Redirect admin to admin dashboard
+        } else {
+          this.props.history.push("/"); // Redirect regular users to homepage
+        }
+      } else {
+        console.error("User snapshot does not exist");
+      }
     } catch (error) {
-      console.error(error);
+      console.error("Error signing in", error.message);
     }
   };
 
@@ -38,7 +54,7 @@ class SignIn extends React.Component {
         <h2>I already have an account</h2>
         <span>Sign in with your email and password</span>
 
-        <form onSubmit={this.handlesubmit}>
+        <form onSubmit={this.handleSubmit}>
           <FormInput
             name="email"
             type="email"
@@ -68,4 +84,4 @@ class SignIn extends React.Component {
   }
 }
 
-export default SignIn;
+export default withRouter(SignIn);

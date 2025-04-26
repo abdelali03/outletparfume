@@ -1,13 +1,49 @@
 .homepage {
+  background: linear-gradient(
+    135deg,
+    #fce4ec,
+    #f8bbd0
+  ); /* Soft pink gradient background */
+  min-height: 100vh; /* Full viewport height */
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 20px 80px;
-}
+  padding: 20px;
+  .homepage-header {
+    margin-bottom: 20px;
+    text-align: center;
 
-.directory-menu {
-  width: 100%;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
+    h1 {
+      font-size: 3rem; /* Large font size for the company name */
+      font-weight: bold;
+      color: #d81b60; /* Rose pink color */
+      text-transform: uppercase;
+      text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
+      font-family: "Georgia", serif; /* Elegant serif font */
+    }
+  }
+  .carousel {
+    width: 100%;
+    max-width: 1000px;
+    /* Fixed height for the carousel */
+    position: relative;
+    overflow: hidden;
+    border-radius: 20px; /* Rounded corners for elegance */
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2); /* Soft shadow for depth */
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain; /* Ensures the image covers the container */
+      transition: opacity 1s ease-in-out; /* Smooth transition between images */
+    }
+  }
+
+  .directory-menu {
+    width: 100%;
+    max-width: 1200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
 }

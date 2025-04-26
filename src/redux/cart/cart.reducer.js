@@ -21,7 +21,7 @@ const cartReducer = (state = INITIAL_STATE, action) => {
       return {
         ...state,
         cartItems: state.cartItems.filter(
-          (item) => item.id !== action.payload.id
+          (item) => item.name !== action.payload.name
         ),
       };
 
@@ -29,7 +29,7 @@ const cartReducer = (state = INITIAL_STATE, action) => {
       return {
         ...state,
         cartItems: state.cartItems.map((item) => {
-          if (item.id === action.payload.id) {
+          if (item.name === action.payload.name) {
             return { ...item, quantity: (item.quantity || 0) + 1 };
           }
           return item;
@@ -39,7 +39,7 @@ const cartReducer = (state = INITIAL_STATE, action) => {
       return {
         ...state,
         cartItems: state.cartItems.map((item) => {
-          if (item.id === action.payload.id) {
+          if (item.name === action.payload.name) {
             const newQuantity = (item.quantity || 1) - 1;
             return { ...item, quantity: newQuantity >= 0 ? newQuantity : 0 };
           }

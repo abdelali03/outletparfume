@@ -5,16 +5,22 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 1px solid black;
+  border: 1px solid #e9a3b0; /* Rose pink border */
+  border-radius: 15px; /* Rounded corners for elegance */
   margin: 0 7.5px 15px;
   overflow: hidden;
+  background-color: #fff; /* White background for contrast */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 
   &:hover {
     cursor: pointer;
+    transform: translateY(-5px); /* Slight lift on hover */
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2); /* Enhanced shadow on hover */
 
     & .background-image {
       transform: scale(1.1);
-      transition: transform 6s cubic-bezier(0.25, 0.45, 0.45, 0.95);
+      transition: transform 0.6s cubic-bezier(0.25, 0.45, 0.45, 0.95);
     }
 
     & .content {
@@ -25,6 +31,14 @@
   &.large {
     height: 380px;
   }
+
+  &.full-width {
+    width: 100% !important;
+    height: 100px; // Adjust to your desired "medium" height
+    min-width: unset;
+    flex: none;
+    margin: 0 auto 15px;
+  }
   &:first-child {
     margin-right: 7.5px;
   }
@@ -32,38 +46,49 @@
   &:last-child {
     margin-left: 7.5px;
   }
+
   .background-image {
     width: 100%;
     height: 100%;
     background-position: center;
     background-size: cover;
+    transition: transform 0.6s ease; /* Smooth scaling effect */
   }
-
   .content {
-    height: 90px;
+    height: auto; /* Adjust height to fit the content */
     padding: 0 25px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    border: 1px solid black;
-    background-color: white;
     opacity: 0.7;
     position: absolute;
+    border-radius: 10px; /* Rounded corners for elegance */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    transition: opacity 0.3s ease, transform 0.3s ease;
 
-    .title {
-      font-weight: bold;
-      margin-bottom: 6px;
-      font-size: 22px;
-      color: #4a4a4a;
-    }
+    .shop-now-image {
+      width: 130px;
+      height: auto; /* Maintain aspect ratio */
+      border-radius: 10px; /* Optional: Add rounded corners */
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
 
-    .subtitle {
-      font-weight: lighter;
-      font-size: 16px;
+      &:hover {
+        transform: scale(1.1); /* Slight zoom effect on hover */
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add shadow on hover */
+      }
     }
   }
+  .menu-item.full-width {
+    width: 100% !important; // Force full width inside its container
+    height: 100px; // Set a medium height (adjust as desired)
+    min-width: unset; // Remove min-width inherited from non-full-width
+    margin: 0 auto 15px; // Center it horizontally if needed (auto left/right)
+    // You can also remove or adjust any flex-related properties if they interfere:
+    flex: none;
+  }
 }
+
 @media screen and (max-width: 1024px) {
   .menu-item {
     min-width: 45%;

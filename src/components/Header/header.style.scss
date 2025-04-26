@@ -1,26 +1,106 @@
 .header {
-  height: 70px;
+  height: 80px;
   width: 100%;
   display: flex;
   justify-content: space-between;
-  margin-bottom: 25px;
+  align-items: center;
+  background: linear-gradient(
+    135deg,
+    #f6d9d2,
+    #ecbdc6
+  ); /* Gradient using the first two colors */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  padding: 0 20px;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
 
+  /* Logo container */
   .logo-container {
     height: 100%;
-    width: 70px;
-    padding: 25px;
+    width: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .logo {
+      width: 100%;
+      height: auto;
+      fill: #9283a9; /* Neutral purple for the logo */
+      transition: transform 0.3s ease, fill 0.3s ease;
+
+      &:hover {
+        transform: scale(1.1); /* Slight zoom effect on hover */
+        fill: #b898c1; /* Highlight with a lighter purple */
+      }
+    }
   }
 
+  /* Options container */
   .options {
-    width: 50%;
-    height: 100%;
     display: flex;
     align-items: center;
     justify-content: flex-end;
+    gap: 15px; /* Add spacing between options */
 
-    .option {
-      padding: 10px 15px;
-      cursor: pointer;
+    @media screen and (max-width: 768px) {
+      flex-wrap: wrap; /* Wrap options to the next line if needed */
+      justify-content: center; /* Center options on smaller screens */
+      gap: 10px; /* Reduce spacing between options */
+    }
+  }
+
+  /* Individual option links and buttons */
+  .option {
+    padding: 10px 15px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #9283a9; /* Neutral purple for text */
+    text-transform: uppercase;
+    text-decoration: none;
+    cursor: pointer;
+    transition: color 0.3s ease, background-color 0.3s ease;
+    border-radius: 20px;
+
+    &:hover {
+      color: #d8a9c1; /* Light pink-purple on hover */
+      background-color: rgba(
+        216,
+        169,
+        193,
+        0.2
+      ); /* Subtle background highlight */
+    }
+
+    @media screen and (max-width: 768px) {
+      font-size: 14px; /* Reduce font size for smaller screens */
+      padding: 8px 10px; /* Adjust padding for smaller screens */
+    }
+  }
+
+  /* Search icon styling */
+  .option.search {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 15px;
+
+    @media screen and (max-width: 768px) {
+      padding: 0 10px; /* Adjust padding for smaller screens */
+    }
+  }
+
+  /* Cart icon styling */
+  .cart-icon {
+    margin-left: 15px;
+    cursor: pointer;
+
+    &:hover {
+      transform: scale(1.1); /* Slight zoom effect on hover */
+    }
+
+    @media screen and (max-width: 768px) {
+      margin-left: 10px; /* Adjust margin for smaller screens */
     }
   }
 }
