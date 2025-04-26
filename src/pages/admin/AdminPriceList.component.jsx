@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { collection, doc, getDocs, setDoc, getDoc } from "firebase/firestore";
+import { collection, doc, getDocs, setDoc } from "firebase/firestore";
 import { db } from "../../firebase/firebase.utils";
 import "./AdminPriceList.style.scss";
 
