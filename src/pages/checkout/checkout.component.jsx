@@ -36,7 +36,11 @@ const CheckoutPage = ({ cartItems, total }) => {
   const generatePDF = async () => {
     try {
       const element = pdfRef.current;
-      const canvas = await html2canvas(element, { scale: 2, useCORS: true });
+      const canvas = await html2canvas(element, {
+        scale: 2,
+        useCORS: true,
+        windowWidth: 794,
+      });
       const imgData = canvas.toDataURL("image/png");
 
       const pdf = new jsPDF("p", "pt", "a4");
@@ -108,6 +112,7 @@ const CheckoutPage = ({ cartItems, total }) => {
         className="pdf-content"
         ref={pdfRef}
         style={{
+          width: "794px",
           padding: "20px",
           background: "#fff",
           fontFamily: "Arial, sans-serif",
