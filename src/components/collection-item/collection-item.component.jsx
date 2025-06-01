@@ -20,7 +20,7 @@ const CollectionItem = ({ item, addItem }) => {
         <span className="price">${price}</span>
       </div>
       {quantity === 0 ? (
-        <div className="out-of-stock">Out of Stock</div> // Display "Out of Stock" if quantity is 0.
+        <div className="out-of-stock">ausverkauft</div> // Display "Out of Stock" if quantity is 0.
       ) : (
         <CustomButton onClick={() => addItem(item)} inverted>
           Add to Cart

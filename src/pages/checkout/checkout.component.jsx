@@ -19,8 +19,6 @@ const CheckoutPage = ({ cartItems, total }) => {
     phone: "",
   });
   const [isModalOpen, setIsModalOpen] = useState(false);
-
-  // Ref for the section to be included in the PDF
   const pdfRef = useRef();
 
   const handleChange = (e) => {
@@ -32,7 +30,6 @@ const CheckoutPage = ({ cartItems, total }) => {
     setIsModalOpen(true);
   };
 
-  // Function to generate the PDF with product images
   const generatePDF = async () => {
     try {
       const element = pdfRef.current;
@@ -58,10 +55,9 @@ const CheckoutPage = ({ cartItems, total }) => {
     e.preventDefault();
     const { fullName, email, address, phone } = formData;
     if (!fullName || !email || !address || !phone) {
-      alert("Please fill in all the fields.");
+      alert("Bitte alle Felder ausfüllen.");
       return;
     }
-    // Perform additional actions here (e.g., save the order)
     generatePDF();
     setIsModalOpen(false);
   };
@@ -70,33 +66,36 @@ const CheckoutPage = ({ cartItems, total }) => {
     <div className="checkout-page">
       <div className="checkout-header">
         <div className="header-block">
-          <span>Product</span>
+          <span>Produkte</span>
         </div>
         <div className="header-block">
-          <span>Description</span>
+          <span>Beschreibung</span>
         </div>
         <div className="header-block">
-          <span>Quantity</span>
+          <span>Menge</span>
         </div>
         <div className="header-block">
-          <span>Price</span>
+          <span>Preis</span>
         </div>
         <div className="header-block">
-          <span>Remove</span>
+          <span>Entfernen</span>
         </div>
       </div>
-      {cartItems.map((cartItem) => (
-        <CheckoutItem key={cartItem.id} cartItem={cartItem} />
-      ))}
+
+      <div className="checkout-items">
+        {cartItems.map((cartItem) => (
+          <CheckoutItem key={cartItem.id} cartItem={cartItem} />
+        ))}
+      </div>
+
       <div className="total">
-        <span>TOTAL: ${total}</span>
+        <span>Gesamtsumme: ${total}</span>
       </div>
-      {/* Button to open the order and PDF form */}
-      <button className="buy-now-button" onClick={handleBuyNow}>
-        Buy Now & Generate PDF
+
+      <button className="checkout-button" onClick={handleBuyNow}>
+        jetzt einkaufen & PDF erstellen
       </button>
 
-      {/* Modal for user data */}
       {isModalOpen && (
         <UserInfoModal
           isOpen={isModalOpen}
@@ -107,22 +106,8 @@ const CheckoutPage = ({ cartItems, total }) => {
         />
       )}
 
-      {/* Hidden section to be included in the PDF */}
-      <div
-        className="pdf-content"
-        ref={pdfRef}
-        style={{
-          width: "794px",
-          padding: "20px",
-          background: "#fff",
-          fontFamily: "Arial, sans-serif",
-          fontSize: "12px",
-          color: "#333",
-        }}
-      >
-        <h2 style={{ textAlign: "center", marginBottom: "20px" }}>
-          Order Summary
-        </h2>
+      <div className="pdf-content" ref={pdfRef}>
+        <h2 className="pdf-title">Bestellübersicht</h2>
         <p>
           <strong>Name:</strong> {formData.fullName}
         </p>
@@ -130,86 +115,41 @@ const CheckoutPage = ({ cartItems, total }) => {
           <strong>Email:</strong> {formData.email}
         </p>
         <p>
-          <strong>Address:</strong> {formData.address}
+          <strong>Addresse:</strong> {formData.address}
         </p>
         <p>
           <strong>Phone:</strong> {formData.phone}
         </p>
         <hr />
-        <h3 style={{ marginBottom: "10px" }}>Ordered Items</h3>
-        <table
-          style={{
-            width: "100%",
-            borderCollapse: "collapse",
-            marginBottom: "20px",
-          }}
-        >
+        <h3>Bestellte Artikel</h3>
+        <table className="pdf-table">
           <thead>
             <tr>
-              <th
-                style={{
-                  borderBottom: "1px solid #ccc",
-                  padding: "10px",
-                  textAlign: "left",
-                }}
-              >
-                Image
-              </th>
-              <th
-                style={{
-                  borderBottom: "1px solid #ccc",
-                  padding: "10px",
-                  textAlign: "left",
-                }}
-              >
-                Name
-              </th>
-              <th
-                style={{
-                  borderBottom: "1px solid #ccc",
-                  padding: "10px",
-                  textAlign: "left",
-                }}
-              >
-                Quantity
-              </th>
-              <th
-                style={{
-                  borderBottom: "1px solid #ccc",
-                  padding: "10px",
-                  textAlign: "left",
-                }}
-              >
-                Price
-              </th>
+              <th>Bild</th>
+              <th>Name</th>
+              <th>Menge</th>
+              <th>Preis</th>
             </tr>
           </thead>
           <tbody>
             {cartItems.map((item) => (
               <tr key={item.id}>
-                <td style={{ padding: "10px" }}>
+                <td>
                   <img
                     src={item.imageUrl}
                     alt={item.name}
                     crossOrigin="anonymous"
-                    style={{
-                      width: "80px", // Larger image size
-                      height: "80px",
-                      objectFit: "cover",
-                      borderRadius: "5px", // Rounded corners for images
-                    }}
+                    className="pdf-img"
                   />
                 </td>
-                <td style={{ padding: "10px" }}>{item.name}</td>
-                <td style={{ padding: "10px" }}>{item.quantity}</td>
-                <td style={{ padding: "10px" }}>${item.price}</td>
+                <td>{item.name}</td>
+                <td>{item.quantity}</td>
+                <td>${item.price}</td>
               </tr>
             ))}
           </tbody>
         </table>
-        <h3 style={{ textAlign: "center", marginTop: "10px" }}>
-          Total: ${total}
-        </h3>
+        <h3 className="pdf-total">Gesamtsumme: ${total}</h3>
       </div>
     </div>
   );

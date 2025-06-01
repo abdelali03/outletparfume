@@ -1,28 +1,24 @@
 .checkout-page {
-  width: 80%;
+  width: 90%;
   max-width: 1200px;
   margin: 0 auto;
   padding: 20px;
-  background: #ffffff; /* Clean white background */
-  border-radius: 10px; /* Rounded corners for elegance */
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  background: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 
   .checkout-header {
     display: grid;
-    grid-template-columns: repeat(4, 1fr) 100px; /* Adjust columns for item details */
+    grid-template-columns: repeat(4, 1fr) 100px;
     text-align: center;
     border-bottom: 1px solid #ddd;
     padding: 10px 0;
     font-weight: bold;
     font-size: 1rem;
-    color: #4a4a4a; /* Neutral dark gray for text */
+    color: #4a4a4a;
 
     @media screen and (max-width: 768px) {
-      grid-template-columns: repeat(
-        3,
-        1fr
-      ); /* Reduce columns for smaller screens */
-      font-size: 0.9rem;
+      display: none;
     }
 
     .header-block {
@@ -33,65 +29,8 @@
   .checkout-items {
     display: flex;
     flex-direction: column;
-    gap: 15px; /* Add spacing between items */
+    gap: 15px;
     margin: 20px 0;
-
-    .checkout-item {
-      display: grid;
-      grid-template-columns: 1fr 2fr 1fr 1fr 50px; /* Layout for item details */
-      align-items: center;
-      padding: 10px;
-      border: 1px solid #ddd;
-      border-radius: 8px;
-      background: #f9f9f9; /* Light gray background for items */
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-
-      &:hover {
-        transform: translateY(-3px); /* Slight lift on hover */
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add shadow on hover */
-      }
-
-      @media screen and (max-width: 768px) {
-        grid-template-columns: 1fr 2fr 1fr; /* Simplify layout for smaller screens */
-        font-size: 0.9rem;
-      }
-
-      .image-container {
-        width: 80px;
-        height: 80px;
-        background-size: cover;
-        background-position: center;
-        border-radius: 5px;
-
-        @media screen and (max-width: 768px) {
-          width: 60px;
-          height: 60px; /* Adjust image size for smaller screens */
-        }
-      }
-
-      .name,
-      .quantity,
-      .price {
-        text-align: center;
-        font-size: 1rem;
-        color: #4a4a4a;
-
-        @media screen and (max-width: 768px) {
-          font-size: 0.9rem; /* Adjust font size for smaller screens */
-        }
-      }
-
-      .remove-button {
-        font-size: 1.2rem;
-        color: #d81b60; /* Rose pink for remove button */
-        cursor: pointer;
-        transition: color 0.3s ease;
-
-        &:hover {
-          color: #b71c1c; /* Darker red on hover */
-        }
-      }
-    }
   }
 
   .total {
@@ -102,7 +41,7 @@
     margin-top: 20px;
 
     @media screen and (max-width: 768px) {
-      font-size: 1.2rem; /* Adjust font size for smaller screens */
+      font-size: 1.2rem;
     }
   }
 
@@ -115,18 +54,60 @@
     font-size: 1.2rem;
     font-weight: bold;
     color: #fff;
-    background: #d81b60; /* Rose pink background */
+    background: #d81b60;
     border: none;
     border-radius: 5px;
     cursor: pointer;
     transition: background 0.3s ease;
 
     &:hover {
-      background: #b71c1c; /* Darker red on hover */
+      background: #b71c1c;
     }
 
     @media screen and (max-width: 768px) {
-      font-size: 1rem; /* Adjust font size for smaller screens */
+      font-size: 1rem;
+    }
+  }
+
+  .pdf-content {
+    max-width: 100%;
+    overflow-x: auto;
+    padding: 20px;
+    background: #fff;
+    font-family: Arial, sans-serif;
+    font-size: 12px;
+    color: #333;
+    box-sizing: border-box;
+    margin-top: 40px;
+
+    .pdf-title {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .pdf-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 20px;
+
+      th,
+      td {
+        border-bottom: 1px solid #ccc;
+        padding: 10px;
+        text-align: left;
+      }
+
+      .pdf-img {
+        width: 80px;
+        height: 80px;
+        object-fit: cover;
+        border-radius: 5px;
+      }
+    }
+
+    .pdf-total {
+      text-align: center;
+      margin-top: 10px;
     }
   }
 }

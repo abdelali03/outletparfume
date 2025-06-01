@@ -54,9 +54,6 @@ const UserInfoModal = ({
         required
       />
       <button type="submit">Submit</button>
-      <button type="button" onClick={handleWhatsapp}>
-        Send via WhatsApp
-      </button>
     </form>
   </Modal>
 );
