@@ -70,24 +70,23 @@
     padding: 12px 0;
     font-size: 14px;
     font-weight: bold;
-    color: white;
-    background-color: rgba(11, 158, 75, 0.9);
-    &:hover {
-      background-color: #26a207;
-    }
+    color: #fff;
+    background-color: #26a207; // Immer grün
     border: none;
     border-radius: 0 0 15px 15px;
     text-align: center;
     cursor: pointer;
-    transition: background-color 0.3s ease;
-    -webkit-transition: background-color 0.3s ease;
-    -moz-transition: background-color 0.3s ease;
-    -ms-transition: background-color 0.3s ease;
-    -o-transition: background-color 0.3s ease;
-  }
+    transition: background-color 0.2s;
 
-  .custom-button:hover {
-    background-color: #26a207;
+    &:hover {
+      background-color: #26a207; // Auch beim Hover grün
+      color: #fff;
+    }
+
+    &:active {
+      background-color: #111; // Beim Klicken schwarz
+      color: #fff;
+    }
   }
 
   .out-of-stock {
