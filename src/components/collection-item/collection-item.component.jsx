@@ -5,7 +5,7 @@ import { connect } from "react-redux";
 import { addItem } from "../../redux/cart/cart.actions";
 
 const CollectionItem = ({ item, addItem }) => {
-  const { name, price, imageUrl, quantity } = item;
+  const { name, imageUrl, quantity } = item;
   const [showModal, setShowModal] = useState(false);
 
   return (
