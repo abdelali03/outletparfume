@@ -1,32 +1,41 @@
-import React from "react";
+import React, { useState } from "react";
 import "./collection-item.style.scss";
 import CustomButton from "../custom-button/custom-button.component";
 import { connect } from "react-redux";
 import { addItem } from "../../redux/cart/cart.actions";
 
 const CollectionItem = ({ item, addItem }) => {
-  const { name, price, imageUrl, quantity } = item; // Ensure `quantity` is part of the item object.
+  const { name, price, imageUrl, quantity } = item;
+  const [showModal, setShowModal] = useState(false);
 
   return (
-    <div className="collection-item">
-      <div
-        className="image"
-        style={{
-          backgroundImage: `url(${imageUrl})`,
-        }}
-      />
-      <div className="collection-footer">
-        <span className="name">{name}</span>
-        <span className="price">${price}</span>
+    <>
+      <div className="collection-item">
+        <div
+          className="image"
+          style={{
+            backgroundImage: `url(${imageUrl})`,
+          }}
+          onClick={() => setShowModal(true)}
+        />
+        <div className="collection-footer">
+          <span className="name">{name}</span>
+          <span className="price">${price}</span>
+        </div>
+        {quantity === 0 ? (
+          <div className="out-of-stock">ausverkauft</div>
+        ) : (
+          <CustomButton onClick={() => addItem(item)} inverted>
+            Add to Cart
+          </CustomButton>
+        )}
       </div>
-      {quantity === 0 ? (
-        <div className="out-of-stock">ausverkauft</div> // Display "Out of Stock" if quantity is 0.
-      ) : (
-        <CustomButton onClick={() => addItem(item)} inverted>
-          Add to Cart
-        </CustomButton>
+      {showModal && (
+        <div className="image-modal" onClick={() => setShowModal(false)}>
+          <img src={imageUrl} alt={name} />
+        </div>
       )}
-    </div>
+    </>
   );
 };
 
