@@ -71,16 +71,23 @@
     font-size: 14px;
     font-weight: bold;
     color: white;
-    background-color: rgba(216, 27, 96, 0.9);
+    background-color: rgba(11, 158, 75, 0.9);
+    &:hover {
+      background-color: #26a207;
+    }
     border: none;
     border-radius: 0 0 15px 15px;
     text-align: center;
     cursor: pointer;
     transition: background-color 0.3s ease;
+    -webkit-transition: background-color 0.3s ease;
+    -moz-transition: background-color 0.3s ease;
+    -ms-transition: background-color 0.3s ease;
+    -o-transition: background-color 0.3s ease;
   }
 
   .custom-button:hover {
-    background-color: #b71c1c;
+    background-color: #26a207;
   }
 
   .out-of-stock {
@@ -92,5 +99,11 @@
     font-weight: bold;
     text-align: center;
     border-radius: 0 0 15px 15px;
+  }
+  &:hover {
+    .custom-button {
+      background-color: #26a207;
+      color: #fff;
+    }
   }
 }
