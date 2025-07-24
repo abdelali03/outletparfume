@@ -39,23 +39,14 @@
 
   /* Collection Item Styling */
   .collection-item {
-    background-color: white;
-    border-radius: 10px;
-    padding: 20px;
-    height: 250px;
     width: 100%;
-
-    text-align: left;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.07);
+    border-radius: 10px;
+    transition: transform 0.3s;
     &:hover {
       transform: scale(1.02);
     }
+    /* Remove padding, background, and centering here! */
   }
 
   /* For No Results Message */

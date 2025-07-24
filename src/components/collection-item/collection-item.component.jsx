@@ -7,6 +7,7 @@ import { addItem } from "../../redux/cart/cart.actions";
 const CollectionItem = ({ item, addItem }) => {
   const { name, imageUrl, quantity } = item;
   const [showModal, setShowModal] = useState(false);
+  const [nameExpanded, setNameExpanded] = useState(false);
 
   return (
     <>
@@ -19,7 +20,13 @@ const CollectionItem = ({ item, addItem }) => {
           onClick={() => setShowModal(true)}
         />
         <div className="collection-footer">
-          <span className="name">{name}</span>
+          <span
+            className={`name${nameExpanded ? " expanded" : ""}`}
+            onClick={() => setNameExpanded((prev) => !prev)}
+            title={nameExpanded ? "Klicken zum Kürzen" : "Klicken für mehr"}
+          >
+            {name}
+          </span>
         </div>
         {quantity === 0 ? (
           <div className="out-of-stock">ausverkauft</div>
