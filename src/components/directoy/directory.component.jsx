@@ -115,6 +115,8 @@ const Directory = ({ sections, history }) => {
     "dkny",
     "lattafa",
     "dearpolly",
+    "roja",
+    "zadi-voltair",
   ];
 
   const handleInputChange = (event) => {

@@ -857,10 +857,10 @@ const INITIAL_STATE = {
     {
       title: "Zadi&Voltaire",
       imageUrl:
-        "https://res.cloudinary.com/dlxpttd8b/image/upload/v1744819380/bdb156f027f1c83b8884d8b46c1f1361_mja8mu.jpg",
+        "https://res.cloudinary.com/dlxpttd8b/image/upload/v1758835425/208917-2_rkxi0m.jpg",
       id: 103,
       imageUrl1:
-        "https://res.cloudinary.com/dlxpttd8b/image/upload/v1758816280/375x500.102813_ztnfli.jpg",
+        "https://res.cloudinary.com/dlxpttd8b/image/upload/v1758835454/zadig-voltaire-this-is-her-coffret-eau-de-parfum_jaclsk.jpg",
       linkUrl: "shop/zadi-voltaire",
     },
     {
@@ -907,6 +907,15 @@ const INITIAL_STATE = {
       imageUrl1:
         "https://res.cloudinary.com/dlxpttd8b/image/upload/v1758816808/s-l400_acje9p.png",
       linkUrl: "shop/dearpolly",
+    },
+    {
+      title: "Roja",
+      imageUrl:
+        "https://res.cloudinary.com/dlxpttd8b/image/upload/v1758835723/the-aoud-discovery-collection-discovery-set-roja-parfums-969285_ofcfhn.jpg",
+      id: 108,
+      imageUrl1:
+        "https://res.cloudinary.com/dlxpttd8b/image/upload/v1758835750/elysium-pour-homme-parfum-by-roja-parfums-17oz-50-ml-5060399671316_cmmp0f.jpg",
+      linkUrl: "shop/roja",
     },
     {
       title: "andereProdukte",
