@@ -761,6 +761,151 @@ const INITIAL_STATE = {
         "https://res.cloudinary.com/dlxpttd8b/image/upload/v1745616085/zarko_logo_fqn074.png",
       linkUrl: "shop/zarko-perfume",
     },
+
+    {
+      title: "Marc jacob",
+      imageUrl:
+        "https://res.cloudinary.com/dlxpttd8b/image/upload/v1758815352/mj-daisy-eau-so-intense-olfactive-v3_k2e5tg.jpg",
+      id: 93,
+      imageUrl1:
+        "https://res.cloudinary.com/dlxpttd8b/image/upload/v1758815331/marc-jacobs-1_ewl11b.jpg",
+      linkUrl: "shop/marc-jacob",
+    },
+    {
+      title: "Jo Malone",
+      imageUrl:
+        "https://res.cloudinary.com/dlxpttd8b/image/upload/v1758815427/J_Malone_collection_dsyvky.jpg",
+      id: 94,
+      imageUrl1:
+        "https://res.cloudinary.com/dlxpttd8b/image/upload/v1758815441/JoMalone_Logo_rjwaee.jpg",
+      linkUrl: "shop/jo-malone",
+    },
+    {
+      title: "Celine",
+      imageUrl:
+        "https://res.cloudinary.com/dlxpttd8b/image/upload/v1758815464/unnamed_ggnvg2.jpg",
+      id: 95,
+      imageUrl1:
+        "https://res.cloudinary.com/dlxpttd8b/image/upload/v1758815474/celine-new-logo-sq_nndppr.jpg",
+      linkUrl: "shop/celine",
+    },
+    {
+      title: "Philosykos",
+      imageUrl:
+        "https://res.cloudinary.com/dlxpttd8b/image/upload/v1758815591/philosykos-diptyque-1_tx5par.webp",
+      id: 96,
+      imageUrl1:
+        "https://res.cloudinary.com/dlxpttd8b/image/upload/v1758815663/philosykoslogo700_wdhiag.jpg",
+      linkUrl: "shop/philosykos",
+    },
+    {
+      title: "Mirabilis",
+      imageUrl:
+        "https://res.cloudinary.com/dlxpttd8b/image/upload/v1758815760/06373d226105245.Y3JvcCwxNDAwLDEwOTUsMCww_go1cjb.png",
+      id: 97,
+      imageUrl1:
+        "https://res.cloudinary.com/dlxpttd8b/image/upload/v1758815801/Mirabilis-Logo-Web_m7tsxw.png",
+      linkUrl: "shop/mirabilis",
+    },
+    {
+      title: "Trussardi",
+      imageUrl:
+        "https://res.cloudinary.com/dlxpttd8b/image/upload/v1758815882/trussardi_parfums_1911_donna_e_uomo_d0qg5e.jpg",
+      id: 98,
+      imageUrl1:
+        "https://res.cloudinary.com/dlxpttd8b/image/upload/v1758815855/o.114_ptrdfv.jpg",
+      linkUrl: "shop/trussardi",
+    },
+    {
+      title: "Billie Eilish",
+      imageUrl:
+        "https://res.cloudinary.com/dlxpttd8b/image/upload/v1758815930/71ZDTQBLtFL._UF1000_1000_QL80__jg4jfy.jpg",
+      id: 99,
+      imageUrl1:
+        "https://res.cloudinary.com/dlxpttd8b/image/upload/v1758815949/Billie-Eilish-Logo-Small_wyav3j.jpg",
+      linkUrl: "shop/billie-eilish",
+    },
+    {
+      title: "Giardino",
+      imageUrl:
+        "https://res.cloudinary.com/dlxpttd8b/image/upload/v1758816086/61loP1PcxIL._UF350_350_QL80__tn0dgu.jpg",
+      id: 100,
+      imageUrl1:
+        "https://res.cloudinary.com/dlxpttd8b/image/upload/v1758816106/o.5366_t7l9jt.png",
+      linkUrl: "shop/giardino",
+    },
+    {
+      title: "Issey Miyake",
+      imageUrl:
+        "https://res.cloudinary.com/dlxpttd8b/image/upload/v1758816167/IsseyMiyakePARFUME_itggyx.jpg",
+      id: 101,
+      imageUrl1:
+        "https://res.cloudinary.com/dlxpttd8b/image/upload/v1758816174/issey-miyake_glmihx.svg",
+      linkUrl: "shop/issey-miyake",
+    },
+    {
+      title: "Club de nuit",
+      imageUrl:
+        "https://res.cloudinary.com/dlxpttd8b/image/upload/v1758816224/718qmLxCymL._UF350_350_QL80__joe0bq.jpg",
+      id: 102,
+      imageUrl1:
+        "https://res.cloudinary.com/dlxpttd8b/image/upload/v1758816280/375x500.102813_ztnfli.jpg",
+      linkUrl: "shop/club-de-nuit",
+    },
+    {
+      title: "Zadi&Voltaire",
+      imageUrl:
+        "https://res.cloudinary.com/dlxpttd8b/image/upload/v1744819380/bdb156f027f1c83b8884d8b46c1f1361_mja8mu.jpg",
+      id: 103,
+      imageUrl1:
+        "https://res.cloudinary.com/dlxpttd8b/image/upload/v1758816280/375x500.102813_ztnfli.jpg",
+      linkUrl: "shop/zadi-voltaire",
+    },
+    {
+      title: "Kenzo",
+      imageUrl:
+        "https://res.cloudinary.com/dlxpttd8b/image/upload/v1758816435/s-l400_crq1x0.jpg",
+      id: 104,
+      imageUrl1:
+        "https://res.cloudinary.com/dlxpttd8b/image/upload/v1758816443/38c9_gukrob.jpg",
+      linkUrl: "shop/kenzo",
+    },
+    {
+      title: "L‘ARTISAN PARFUMEUR",
+      imageUrl:
+        "https://res.cloudinary.com/dlxpttd8b/image/upload/v1758816563/Passage-d-Enfer-100ml-content-banner_gs4jk7.jpg",
+      id: 105,
+      imageUrl1:
+        "https://res.cloudinary.com/dlxpttd8b/image/upload/v1758816610/o.119_g93ptt.jpg",
+      linkUrl: "shop/lartisanparfumeur",
+    },
+    {
+      title: "DKNY",
+      imageUrl:
+        "https://res.cloudinary.com/dlxpttd8b/image/upload/v1758816668/dkny-000823dk-1_nnkrqe.webp",
+      id: 106,
+      imageUrl1:
+        "https://res.cloudinary.com/dlxpttd8b/image/upload/v1758816679/dkny-logo-png_seeklogo-42335_xlazil.png",
+      linkUrl: "shop/dkny",
+    },
+    {
+      title: "Lattafa",
+      imageUrl:
+        "https://res.cloudinary.com/dlxpttd8b/image/upload/v1758816728/Mens_3fb70373-97d6-4a91-94c6-bbbbe55b8c56_ug0zf4.jpg",
+      id: 107,
+      imageUrl1:
+        "https://res.cloudinary.com/dlxpttd8b/image/upload/v1758816737/lattafa-logo-png_seeklogo-511416_h0vdgs.png",
+      linkUrl: "shop/lattafa",
+    },
+    {
+      title: "DEAR POLLY",
+      imageUrl:
+        "https://res.cloudinary.com/dlxpttd8b/image/upload/v1758816754/global_images-p3760298541209-1_egyehu.jpg",
+      id: 108,
+      imageUrl1:
+        "https://res.cloudinary.com/dlxpttd8b/image/upload/v1758816808/s-l400_acje9p.png",
+      linkUrl: "shop/dearpolly",
+    },
     {
       title: "andereProdukte",
       imageUrl:

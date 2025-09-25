@@ -99,6 +99,22 @@ const Directory = ({ sections, history }) => {
     "salvatore-ferragamo",
     "terre-de-hermes",
     "zarko-perfume",
+    "marc-jacob",
+    "jo-malone",
+    "celine",
+    "philosykos",
+    "mirabilis",
+    "trussardi",
+    "billie-eilish",
+    "giardino",
+    "issey-miyake",
+    "club-de-nuit",
+    "zadi-voltaire",
+    "kenzo",
+    "lartisanparfumwur",
+    "dkny",
+    "lattafa",
+    "dearpolly",
   ];
 
   const handleInputChange = (event) => {

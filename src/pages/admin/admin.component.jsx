@@ -31,13 +31,15 @@ const AdminDashboard = () => {
       const categoriesList = categoriesSnapshot.docs.map((doc) => ({
         id: doc.id,
         ...doc.data(),
+        items: doc.data().items || [], // Ensure items is always an array
       }));
       setCategories(categoriesList);
 
       const outOfStock = [];
       categoriesSnapshot.docs.forEach((doc) => {
         const categoryData = doc.data();
-        categoryData.items.forEach((item) => {
+        const items = categoryData.items || []; // Ensure items is always an array
+        items.forEach((item) => {
           if (item.quantity <= 0) {
             outOfStock.push({
               ...item,
@@ -140,16 +142,21 @@ const AdminDashboard = () => {
     }
   };
 
+  // Ensure category.items and outOfStockProducts are always valid arrays before filtering
   const filteredCategories = categories.map((category) => ({
     ...category,
-    items: category.items.filter((item) =>
-      item.name.toLowerCase().includes(searchTerm.toLowerCase())
-    ),
+    items: Array.isArray(category.items)
+      ? category.items.filter((item) =>
+          item.name.toLowerCase().includes(searchTerm.toLowerCase())
+        )
+      : [], // If items is undefined or not an array, default to an empty array
   }));
 
-  const filteredOutOfStockProducts = outOfStockProducts.filter((product) =>
-    product.name.toLowerCase().includes(searchTerm.toLowerCase())
-  );
+  const filteredOutOfStockProducts = Array.isArray(outOfStockProducts)
+    ? outOfStockProducts.filter((product) =>
+        product.name.toLowerCase().includes(searchTerm.toLowerCase())
+      )
+    : []; // If outOfStockProducts is undefined or not an array, default to an empty array
 
   return (
     <div className="admin-dashboard">
@@ -241,7 +248,7 @@ const AdminDashboard = () => {
               <li key={category.id}>
                 <h3>{category.category}</h3>
                 <ul>
-                  {category.items &&
+                  {Array.isArray(category.items) &&
                     category.items.map((product) => (
                       <li key={product.id}>
                         <div>
