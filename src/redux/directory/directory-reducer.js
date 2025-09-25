@@ -63,7 +63,7 @@ const INITIAL_STATE = {
       imageUrl1:
         "https://res.cloudinary.com/dlxpttd8b/image/upload/v1744814857/dsquared-logo-min_im1q6c.jpg",
       linkUrl: "shop/dsquared2",
-    },
+    } /*
     {
       title: "MFK",
       imageUrl:
@@ -72,7 +72,7 @@ const INITIAL_STATE = {
       imageUrl1:
         "https://res.cloudinary.com/dlxpttd8b/image/upload/v1744814856/1045_lmxzvp.jpg",
       linkUrl: "shop/mfk",
-    },
+    },*/,
     {
       title: "AZZARO",
       imageUrl:
@@ -571,7 +571,7 @@ const INITIAL_STATE = {
 
       linkUrl: "shop/hermes",
     },
-
+    /*
     {
       title: "Armaf",
       imageUrl:
@@ -599,7 +599,7 @@ const INITIAL_STATE = {
         "https://res.cloudinary.com/dlxpttd8b/image/upload/v1745533794/o.491_yqh4xa.jpg",
       linkUrl: "shop/by-killian",
     },
-    {
+     {
       title: "Emporio Armani",
       imageUrl:
         "https://res.cloudinary.com/dlxpttd8b/image/upload/v1745533870/b24c92443016307361e015351ba44770_ydj3zf.jpg",
@@ -607,7 +607,7 @@ const INITIAL_STATE = {
       imageUrl1:
         "https://res.cloudinary.com/dlxpttd8b/image/upload/v1745533854/22ab09cc832829056a579774db8df671_eqko93.jpg",
       linkUrl: "shop/emporio-armani",
-    },
+    }, */
     {
       title: "Elie Saab",
       imageUrl:
@@ -626,7 +626,7 @@ const INITIAL_STATE = {
         "https://res.cloudinary.com/dlxpttd8b/image/upload/v1745534070/o.140_ludvyu.jpg",
       linkUrl: "shop/frederic-malle",
     },
-    {
+    /*{
       title: "Giardini di Toscana",
       imageUrl:
         "https://res.cloudinary.com/dlxpttd8b/image/upload/v1745534212/o.IH8n2dqN1Jw_xbzxpt.jpg",
@@ -634,7 +634,7 @@ const INITIAL_STATE = {
       imageUrl1:
         "https://res.cloudinary.com/dlxpttd8b/image/upload/v1745534168/logo-giardini-di-toscana_tks3kx.jpg",
       linkUrl: "shop/giardini-di-toscana",
-    },
+    },*/
     {
       title: "HFC Devil’s",
       imageUrl:
@@ -679,7 +679,7 @@ const INITIAL_STATE = {
       imageUrl1:
         "https://res.cloudinary.com/dlxpttd8b/image/upload/v1745614372/designers-maison-francis-kurkdjian-1_gwfenn.jpg",
       linkUrl: "shop/maison-francis-kurkdjian",
-    },
+    } /*
     {
       title: "Mancers",
       imageUrl:
@@ -697,7 +697,7 @@ const INITIAL_STATE = {
       imageUrl1:
         "https://res.cloudinary.com/dlxpttd8b/image/upload/v1745614675/logo-marc-antoine-barrois_ouoywt.jpg",
       linkUrl: "shop/marc-antone",
-    },
+    },*/,
     {
       title: "Matière Première",
       imageUrl:
@@ -707,7 +707,7 @@ const INITIAL_STATE = {
         "https://res.cloudinary.com/dlxpttd8b/image/upload/v1745614957/images_1_s6jqsk.png",
       linkUrl: "shop/matiere-premiere",
     },
-    {
+    /* {
       title: "Memo Marfa",
       imageUrl:
         "https://res.cloudinary.com/dlxpttd8b/image/upload/v1745615064/3x30_test_lum_1_-_Grande_144e4544-9d8a-4580-9cf0-b80c46f2c0b1_gnm65x.jpg",
@@ -715,7 +715,7 @@ const INITIAL_STATE = {
       imageUrl1:
         "https://res.cloudinary.com/dlxpttd8b/image/upload/v1745615251/f3e288f977fc6851f8a4b4ad90d0af4b_kyhfkw.webp",
       linkUrl: "shop/memo-marfa",
-    },
+    },*/
     {
       title: "Molecule",
       imageUrl:
@@ -743,6 +743,7 @@ const INITIAL_STATE = {
         "https://res.cloudinary.com/dlxpttd8b/image/upload/v1745615662/d6f8d64e605c29f4838816b6da1b0fc0_o9wnaa.jpg",
       linkUrl: "shop/salvatore-ferragamo",
     },
+    /*
     {
       title: "Terre de Hermès",
       imageUrl:
@@ -752,6 +753,7 @@ const INITIAL_STATE = {
         "https://res.cloudinary.com/dlxpttd8b/image/upload/v1745615782/69_1_2f0d51a5f69aacfb149ac7b21c486d89_bvyh9h.png",
       linkUrl: "shop/terre-de-hermes",
     },
+   
     {
       title: "Zarko Perfume",
       imageUrl:
@@ -760,7 +762,7 @@ const INITIAL_STATE = {
       imageUrl1:
         "https://res.cloudinary.com/dlxpttd8b/image/upload/v1745616085/zarko_logo_fqn074.png",
       linkUrl: "shop/zarko-perfume",
-    },
+    },*/
 
     {
       title: "Marc jacob",

@@ -10,100 +10,17 @@ import {
 
 // New categories to add, starting from ID 93
 const NEW_CATEGORIES = {
-  Marc_jacob: {
-    id: 93,
-    title: "Marc jacob",
-    routeName: "marc-jacob",
-    items: [], // Empty items array for now
-  },
-  Jo_Malone: {
-    id: 94,
-    title: "Jo Malone",
-    routeName: "jo-malone",
+  Roja: {
+    id: 109,
+    title: "Roja",
+    routeName: "roja",
+
     items: [],
   },
-  Celine: {
-    id: 95,
-    title: "Celine",
-    routeName: "celine",
-    items: [],
-  },
-  Philosykos: {
-    id: 96,
-    title: "Philosykos",
-    routeName: "philosykos",
-    items: [],
-  },
-  Mirabilis: {
-    id: 97,
-    title: "Mirabilis",
-    routeName: "mirabilis",
-    items: [],
-  },
-  Trussardi: {
-    id: 98,
-    title: "Trussardi",
-    routeName: "trussardi",
-    items: [],
-  },
-  Billie_Eilish: {
-    id: 99,
-    title: "Billie Eilish",
-    routeName: "billie-eilish",
-    items: [],
-  },
-  Giardino: {
-    id: 100,
-    title: "Giardino",
-    routeName: "giardino",
-    items: [],
-  },
-  Issey_Miyake: {
-    id: 101,
-    title: "Issey Miyake",
-    routeName: "issey-miyake",
-    items: [],
-  },
-  Club_de_nuit: {
-    id: 102,
-    title: "Club de nuit",
-    routeName: "club-de-nuit",
-    items: [],
-  },
-  Zadi_Voltaire: {
-    id: 103,
-    title: "Zadi&Voltaire",
-    routeName: "zadi-voltaire",
-    items: [],
-  },
-  Kenzo: {
-    id: 104,
-    title: "Kenzo",
-    routeName: "kenzo",
-    items: [],
-  },
-  L_ARTISAN_PARFUMWUR: {
-    id: 105,
-    title: "L‘ARTISAN PARFUMWUR",
-    routeName: "lartisanparfumwur",
-    items: [],
-  },
-  DKNY: {
-    id: 106,
-    title: "DKNY",
-    routeName: "dkny",
-    items: [],
-  },
-  Lattafa: {
-    id: 107,
-    title: "Lattafa",
-    routeName: "lattafa",
-    items: [],
-  },
-  DEAR_POLLY: {
-    id: 108,
-    title: "DEAR POLLY",
-    routeName: "dearpolly",
+  Zadi_Voltair: {
+    id: 110,
+    title: "Zadi & Voltair",
+    routeName: "zadi-voltair",
     items: [],
   },
 };
