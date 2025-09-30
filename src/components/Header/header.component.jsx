@@ -16,11 +16,14 @@ const Header = ({ currentUser, hidden }) => (
     </Link>
 
     <div className="options">
-      <Link className="option" to="/shop">
-        <span role="img" aria-label="search">
-          🔍
-        </span>
-      </Link>
+      {/* 
+  <Link className="option" to="/shop">
+    <span role="img" aria-label="search">
+      🔍
+    </span>
+  </Link>
+*/}
+
       <CartIcon />
 
       {currentUser ? (

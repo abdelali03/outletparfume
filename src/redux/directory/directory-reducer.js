@@ -3,259 +3,251 @@ const INITIAL_STATE = {
     {
       title: "Xerjoff",
       imageUrl:
-        "https://res.cloudinary.com/dlxpttd8b/image/upload/v1743624077/xerjoff-accento-eau-de-parfum-392719-de_zcsvcy.jpg",
+        "https://res.cloudinary.com/dprm4dd8k/image/upload/v1759159236/images_1_DE_XERJOF_c8zvrc.jpg",
       id: 1,
       imageUrl1:
-        "https://res.cloudinary.com/dlxpttd8b/image/upload/v1743543268/t%C3%A9l%C3%A9chargement_12_ex8bam.png",
+        "https://res.cloudinary.com/dprm4dd8k/image/upload/v1759164037/XERJOF_SGHIRA_rxstwp.png",
 
       linkUrl: "shop/xerjoff",
     },
     {
       title: "BYREDO",
       imageUrl:
-        "https://res.cloudinary.com/dlxpttd8b/image/upload/v1744814857/Byredo-post-thumbnail_bz345z.png",
+        "https://res.cloudinary.com/dprm4dd8k/image/upload/v1759159210/byreedo_kbira_cuohhg.jpg",
       id: 2,
       imageUrl1:
-        "https://res.cloudinary.com/dlxpttd8b/image/upload/v1744814868/o.390_fwa4ku.jpg",
+        "https://res.cloudinary.com/dprm4dd8k/image/upload/v1759159210/BYREDO_SGHIRA_nold7b.png",
       linkUrl: "shop/byredo",
     },
     {
       title: "EX NIHILO",
       imageUrl:
-        "https://res.cloudinary.com/dlxpttd8b/image/upload/v1744814856/blue-talisman-probe-abfuellung-2ml-von-ex-nihilo_gqjiyq.jpg",
+        "https://res.cloudinary.com/dprm4dd8k/image/upload/v1759159225/EX_NIHILO_kbira_aypsng.jpg",
       id: 3,
       imageUrl1:
-        "https://res.cloudinary.com/dlxpttd8b/image/upload/v1744814856/371_1_155066b9f5535b9f78cc57433e364cb6_sekljj.png",
+        "https://res.cloudinary.com/dprm4dd8k/image/upload/v1759159225/ex_nhilo_sghira_ltgjbg.png",
       linkUrl: "shop/exnihilo",
     },
     {
       title: "Versace",
       imageUrl:
-        "https://res.cloudinary.com/dlxpttd8b/image/upload/v1744814869/s-l1200_houtlf.jpg",
+        " https://res.cloudinary.com/dhtjosz4e/image/upload/v1759186601/versace_kbira_xovx6v.jpg ",
       id: 4,
       imageUrl1:
-        "https://res.cloudinary.com/dlxpttd8b/image/upload/v1744814868/o.97_a7oq6m.jpg",
+        " https://res.cloudinary.com/dhtjosz4e/image/upload/v1759186601/versace_sghira_df9ydf.jpg ",
       linkUrl: "shop/versace",
     },
     {
       title: "Calvin Klein",
       imageUrl:
-        "https://res.cloudinary.com/dlxpttd8b/image/upload/v1744814856/3616303476830_Calvin_Klein_Aromatic_Essence_M_EDP_50ml_KV_2026-01-31_1920x1920_ultwqw.webp",
+        "https://res.cloudinary.com/dprm4dd8k/image/upload/v1759182735/calvin_klein_kbira_ftudwk.jpg",
       id: 5,
       imageUrl1:
-        "https://res.cloudinary.com/dlxpttd8b/image/upload/v1744814856/BRAND_LANDING_PAGE_AW14_COS_CALVIN_KLEIN_ooqiiq.jpg",
+        "https://res.cloudinary.com/dprm4dd8k/image/upload/v1759159210/calvin_clein_sghira_sltwlg.png",
       linkUrl: "shop/calvinklein",
     },
     {
       title: "NISHANE",
       imageUrl:
-        "https://res.cloudinary.com/dlxpttd8b/image/upload/v1744814868/hacivat-abfuellung-2ml-von-nishane_jbqnkc.jpg",
+        " https://res.cloudinary.com/dhtjosz4e/image/upload/v1759186579/nishane_kbira_xfmnrc.jpg ",
       id: 6,
       imageUrl1:
-        "https://res.cloudinary.com/dlxpttd8b/image/upload/v1744814855/21qI3FStGUL._SS1000__gvnayb.jpg",
+        " https://res.cloudinary.com/dhtjosz4e/image/upload/v1759186578/NISHANE_sghira_cdv0k6.png ",
       linkUrl: "shop/nishane",
     },
     {
       title: "DSQUARED2",
       imageUrl:
-        "https://res.cloudinary.com/dlxpttd8b/image/upload/v1744814877/wood-dsquared2_wvtp0b.jpg",
+        " https://res.cloudinary.com/dprm4dd8k/image/upload/v1759159224/disquader_kbira_dk3bna.jpg ",
       id: 7,
       imageUrl1:
-        "https://res.cloudinary.com/dlxpttd8b/image/upload/v1744814857/dsquared-logo-min_im1q6c.jpg",
+        " https://res.cloudinary.com/dprm4dd8k/image/upload/v1759159224/disquader_sghira_x7mbfd.png ",
       linkUrl: "shop/dsquared2",
-    } /*
-    {
-      title: "MFK",
-      imageUrl:
-        "https://res.cloudinary.com/dlxpttd8b/image/upload/v1744814856/aqua-media-kv2-no-logo-1920x1080-649421bac861a_eqx8lj.avif",
-      id: 8,
-      imageUrl1:
-        "https://res.cloudinary.com/dlxpttd8b/image/upload/v1744814856/1045_lmxzvp.jpg",
-      linkUrl: "shop/mfk",
-    },*/,
+    },
     {
       title: "AZZARO",
       imageUrl:
-        "https://res.cloudinary.com/dlxpttd8b/image/upload/v1744814869/t%C3%A9l%C3%A9chargement_p0w751.jpg",
+        " https://res.cloudinary.com/dprm4dd8k/image/upload/v1759159209/azaro_kbira_ikuton.jpg ",
       id: 9,
       imageUrl1:
-        "https://res.cloudinary.com/dlxpttd8b/image/upload/v1744814856/azzaro-parfums_kpzfjh.png",
+        " https://res.cloudinary.com/dprm4dd8k/image/upload/v1759159209/AZZARO_sghira_ikiac7.png ",
       linkUrl: "shop/azzaro",
     },
     {
       title: "Tiziana Terenzi",
       imageUrl:
-        "https://res.cloudinary.com/dlxpttd8b/image/upload/v1744815594/Il-Piacere_icsh6l.jpg",
+        " https://res.cloudinary.com/dhtjosz4e/image/upload/v1759186590/Tiziana_Terenzi_kbira2_htlrn0.jpg",
       id: 10,
       imageUrl1:
-        "https://res.cloudinary.com/dlxpttd8b/image/upload/v1744814869/Tiziana-logo_rphc1p.webp",
+        " https://res.cloudinary.com/dhtjosz4e/image/upload/v1759186594/Tiziana_Terenzi_sghira_smgbzu.png",
       linkUrl: "shop/tizianaterenzi",
     },
     {
       title: "212 VIP Carolina Herrera",
       imageUrl:
-        "https://res.cloudinary.com/dlxpttd8b/image/upload/v1744814855/195789-3_ulcdgk.jpg",
+        " https://res.cloudinary.com/dprm4dd8k/image/upload/v1759159207/212_VIP_Carolina_Herrera_KBIRA_am7bni.jpg ",
       id: 11,
       imageUrl1:
-        "https://res.cloudinary.com/dlxpttd8b/image/upload/v1744815679/CH212-02-1400px-final_wk5pjg.gif",
+        " https://res.cloudinary.com/dprm4dd8k/image/upload/v1759159209/212_VIP_Carolina_Herrera_SGHIRA_p2qvku.png",
       linkUrl: "shop/212vipcarolinaherrera",
     },
     {
       title: "tomford",
       imageUrl:
-        "https://res.cloudinary.com/dlxpttd8b/image/upload/v1743626336/global_images-888066138741-2_grande_qt2fb9.webp",
+        " https://res.cloudinary.com/dhtjosz4e/image/upload/v1759186589/TOM_FORD_KBIRA_m39kj9.jpg",
       id: 12,
       imageUrl1:
-        "https://res.cloudinary.com/dlxpttd8b/image/upload/v1743626337/images_vnq7rb.png",
+        " https://res.cloudinary.com/dhtjosz4e/image/upload/v1759186590/tomford_SGHIRA_yqisnq.png",
       linkUrl: "shop/tomford",
     },
     {
       title: "Maison Margiela",
       imageUrl:
-        "https://res.cloudinary.com/dlxpttd8b/image/upload/v1744815870/Beach-Walk-Eaudetoilette-Sunkissed-mob_qvybde.jpg",
+        " https://res.cloudinary.com/dhtjosz4e/image/upload/v1759186556/Maison_Margiela_kbira_vusvvh.jpg",
       id: 13,
       imageUrl1:
-        "https://res.cloudinary.com/dlxpttd8b/image/upload/v1744815884/Maison-Margiela-logo_bcj6l5.jpg",
+        " https://res.cloudinary.com/dhtjosz4e/image/upload/v1759186557/Maison_Margiela_sghira_wq7v8u.png",
       linkUrl: "shop/maisonmargiela",
     },
     {
       title: "Bvlgari",
       imageUrl:
-        "https://res.cloudinary.com/dlxpttd8b/image/upload/v1744815948/611-image-1200-1200-fit_zyhjgg.jpg",
+        " https://res.cloudinary.com/dprm4dd8k/image/upload/v1759159210/Bvlgari_kbira_woicve.jpg",
       id: 14,
       imageUrl1:
-        "https://res.cloudinary.com/dlxpttd8b/image/upload/v1744815964/Bvlgari-logo-59A805E5A3-seeklogo.com_vywa57.png",
+        " https://res.cloudinary.com/dprm4dd8k/image/upload/v1759159208/Bvlgari_sghira_ejmxtx.png",
       linkUrl: "shop/bvlgari",
     },
     {
       title: "JIMMY CHOO",
       imageUrl:
-        "https://res.cloudinary.com/dlxpttd8b/image/upload/v1744816149/d7707c243a9f7468e987acbf9ccd3c93_d9htm3.jpg",
+        " https://res.cloudinary.com/dprm4dd8k/image/upload/v1759159246/jimmy_choo_kbira_wqgz7x.jpg",
       id: 15,
-      imageUrl1: "https://via.placeholder.com/300",
+      imageUrl1:
+        " https://res.cloudinary.com/dprm4dd8k/image/upload/v1759159246/JIMMY_CHOO_sghira_xy55ku.png",
       linkUrl: "shop/jimmychoo",
     },
     {
       title: "Chanel",
       imageUrl:
-        "https://res.cloudinary.com/dlxpttd8b/image/upload/v1743624983/Chanel-Chance-EdP-100ml2_wxwjhp.webp",
+        " https://res.cloudinary.com/dprm4dd8k/image/upload/v1759159211/chanel_kbira_tw15ho.jpg",
       id: 16,
       imageUrl1:
-        "https://res.cloudinary.com/dlxpttd8b/image/upload/v1743624982/2e1870e25ff6144acf7f29fee392083c_fivale.jpg",
+        " https://res.cloudinary.com/dprm4dd8k/image/upload/v1759159211/chanel_sghira_omrxr0.png",
 
       linkUrl: "shop/chanel",
     },
     {
       title: "dior",
       imageUrl:
-        "https://res.cloudinary.com/dlxpttd8b/image/upload/v1743629469/MD_MiniMiss_Mood_EDP_2400x3000_m4rmhw.jpg",
+        " https://res.cloudinary.com/dprm4dd8k/image/upload/v1759159214/dior_kbira_mqc1ab.jpg",
       id: 17,
       imageUrl1:
-        "https://res.cloudinary.com/dlxpttd8b/image/upload/v1743629469/o.160_vujnzf.jpg",
+        " https://res.cloudinary.com/dprm4dd8k/image/upload/v1759159224/dior_sghira_ibaqfx.png",
       linkUrl: "shop/dior",
     },
     {
       title: "giorgioarmani",
       imageUrl:
-        "https://res.cloudinary.com/dlxpttd8b/image/upload/v1743629837/3614274091908_4_800x800_ndjia2.webp",
+        " https://res.cloudinary.com/dprm4dd8k/image/upload/v1759159234/giorgio_armani_kbira_pnigfz.jpg",
       id: 18,
       imageUrl1:
-        "https://res.cloudinary.com/dlxpttd8b/image/upload/v1743629907/o.65_t5ieqn.jpg",
+        " https://res.cloudinary.com/dprm4dd8k/image/upload/v1759159234/giorgio_sghira_p8ugwz.png",
 
       linkUrl: "shop/giorgioarmani",
     },
     {
       title: "JEROBOAM GOZO",
       imageUrl:
-        "https://res.cloudinary.com/dlxpttd8b/image/upload/v1744816400/Gozo-Extrait-de-Parfum-30ml-1_1200x1200_sgkwbc.webp",
+        " https://res.cloudinary.com/dprm4dd8k/image/upload/v1759159245/JEROBOAM_GOZO_kbira_ixzotu.jpg",
       id: 19,
       imageUrl1:
-        "https://res.cloudinary.com/dlxpttd8b/image/upload/v1744816400/images_zns30c.png",
+        " https://res.cloudinary.com/dprm4dd8k/image/upload/v1759159245/JEROBOAM_GOZO_sghira_lb3ybh.png",
       linkUrl: "shop/jeroboamgozo",
     },
 
     {
       title: "doce&gabbana",
       imageUrl:
-        "https://res.cloudinary.com/dlxpttd8b/image/upload/v1743625534/81lzbp3K1IL_juokjz.jpg",
+        " https://res.cloudinary.com/dprm4dd8k/image/upload/v1759159224/doce_gabbana_kbira_jg3vgv.jpg",
       id: 20,
       imageUrl1:
-        "https://res.cloudinary.com/dlxpttd8b/image/upload/v1743625534/96d3759c20e4331faeb614b676d78a57_iiz1nf.jpg",
+        " https://res.cloudinary.com/dprm4dd8k/image/upload/v1759159224/doce_gabbana_sghira_hsbsvv.jpg",
 
       linkUrl: "shop/dolcegabbana",
     },
     {
       title: "CLIVE CHRISTIAN",
       imageUrl:
-        "https://res.cloudinary.com/dlxpttd8b/image/upload/v1744816494/page_1_thumb_large_cetvde.jpg",
+        " https://res.cloudinary.com/dprm4dd8k/image/upload/v1759159212/CLIVE_CHRISTIAN_kbira_powvfn.jpg",
       id: 21,
       imageUrl1:
-        "https://res.cloudinary.com/dlxpttd8b/image/upload/v1744816540/clive-christian-982489_fitpfq.jpg",
+        " https://res.cloudinary.com/dprm4dd8k/image/upload/v1759159211/CLIVE_CHRISTIAN_sghira_vv4dp2.jpg",
       linkUrl: "shop/clivechristian",
     },
     {
       title: "Yves Saint Laurent",
       imageUrl:
-        "https://res.cloudinary.com/dlxpttd8b/image/upload/v1744816607/Yves-Saint-Laurent-Black-Opium-advert-campaign-fragrance-scent-perfume-history-for-The-Perfume-Society_eu1vh3.jpg",
+        " https://res.cloudinary.com/dhtjosz4e/image/upload/v1759186606/Yves_Saint_Laurent_kbira_lfdcsm.jpg",
       id: 22,
       imageUrl1:
-        "https://res.cloudinary.com/dlxpttd8b/image/upload/v1744816619/yves-saint-laurent-logo-03C2739F7E-seeklogo.com_r0n3ph.png",
+        " https://res.cloudinary.com/dhtjosz4e/image/upload/v1759186606/Yves_Saint_Laurent_sghira_bf2dqq.png",
       linkUrl: "shop/yvessaintlaurent",
     },
     {
       title: "VALENTINO",
       imageUrl:
-        "https://res.cloudinary.com/dlxpttd8b/image/upload/v1744816844/valentino-voce-viva-poster-1-600x600_trzzcp.jpg",
+        " https://res.cloudinary.com/dhtjosz4e/image/upload/v1759186592/VALENTINO_kbira_smu3yq.jpg",
       id: 23,
       imageUrl1:
-        "https://res.cloudinary.com/dlxpttd8b/image/upload/v1744816860/valentino_vl6b7i.svg",
+        " https://res.cloudinary.com/dhtjosz4e/image/upload/v1759186600/VALENTINO_sghira_rv9h9i.jpg",
       linkUrl: "shop/valentino",
     },
     {
       title: "simimi",
       imageUrl:
-        "https://res.cloudinary.com/dlxpttd8b/image/upload/v1744817173/unnamed_32__bia5au.webp",
+        " https://res.cloudinary.com/dhtjosz4e/image/upload/v1759186587/simimi_kbira_i2h9rl.jpg",
       id: 24,
       imageUrl1:
-        "https://res.cloudinary.com/dlxpttd8b/image/upload/v1744817236/o.2666_kalrx2.jpg",
+        " https://res.cloudinary.com/dhtjosz4e/image/upload/v1759186587/simimi_sghira_qaasgs.jpg",
       linkUrl: "shop/simimi",
     },
     {
       title: "creed",
       imageUrl:
-        "https://res.cloudinary.com/dlxpttd8b/image/upload/v1743626101/Bildschirmfoto-2021-06-24-um-21.03.03_vo8dzr.webp",
+        " https://res.cloudinary.com/dprm4dd8k/image/upload/v1759159212/creed_jbira2_jhrgaa.jpg",
       id: 25,
       imageUrl1:
-        "https://res.cloudinary.com/dlxpttd8b/image/upload/v1743626101/WhatsApp_Image_2025-04-01_%C3%A0_23.06.13_383365a4_bl0g8x.jpg",
+        " https://res.cloudinary.com/dprm4dd8k/image/upload/v1759159212/creed_sghira_yigmoo.png",
 
       linkUrl: "shop/creed",
     },
     {
       title: "prada",
       imageUrl:
-        "https://res.cloudinary.com/dlxpttd8b/image/upload/v1743629170/20240919-prada-LatestReleases_326x292_anyk4x.webp",
+        " https://res.cloudinary.com/dhtjosz4e/image/upload/v1759186582/prada_kbira2_npszfv.jpg",
       id: 26,
       imageUrl1:
-        "https://res.cloudinary.com/dlxpttd8b/image/upload/v1743629171/o.143_mytkem.jpg",
+        " https://res.cloudinary.com/dhtjosz4e/image/upload/v1759186584/prada_sghira_sassdi.png",
 
       linkUrl: "shop/prada",
     },
     {
       title: "roberto cavalli",
       imageUrl:
-        "https://res.cloudinary.com/dlxpttd8b/image/upload/v1744820748/79e8ea38dd6b9a90d42e23d8a16b6abf_e4tg5q.jpg",
+        " https://res.cloudinary.com/dhtjosz4e/image/upload/v1759186584/roberto_cavalli_kbira_btkwwo.jpg",
       id: 27,
       imageUrl1:
-        "https://res.cloudinary.com/dlxpttd8b/image/upload/v1744820757/roberto-cavalli_sw5g3i.svg",
+        " https://res.cloudinary.com/dhtjosz4e/image/upload/v1759186584/roberto_cavalli_sghira_vlblmi.png",
       linkUrl: "shop/robertocavalli",
     },
     {
       title: "Chloe",
       imageUrl:
-        "https://res.cloudinary.com/dlxpttd8b/image/upload/v1744820845/c99b5ce6a95ef0b34f28a8fff9c04a67_gnrdtx.jpg",
+        " https://res.cloudinary.com/dprm4dd8k/image/upload/v1759159211/Chloe_kbira_mlo3ss.jpg",
       id: 28,
       imageUrl1:
-        "https://res.cloudinary.com/dlxpttd8b/image/upload/v1744820855/chloe-logo-C62282D027-seeklogo.com_a30mva.png",
+        " https://res.cloudinary.com/dprm4dd8k/image/upload/v1759159211/Chloe_sghira_mkkbqa.png",
       linkUrl: "shop/chloe",
     },
     {
@@ -410,7 +402,7 @@ const INITIAL_STATE = {
         "https://res.cloudinary.com/dysuu6zzm/image/upload/v1744817631/images_2_dp7v3w.jpg",
       id: 46,
       imageUrl1:
-        "https://res.cloudinary.com/dlxpttd8b/image/upload/v1745616856/logo-marc-antoine-barrois_zeeydi.jpg",
+        " https://res.cloudinary.com/dhtjosz4e/image/upload/v1759186557/marc_antoine_sghira_zanwx8.png",
       linkUrl: "shop/marcantoinebarrois",
     },
     {
@@ -497,66 +489,66 @@ const INITIAL_STATE = {
     {
       title: "Hugo Boss",
       imageUrl:
-        "https://res.cloudinary.com/dlxpttd8b/image/upload/v1743624596/3614229828535-7_apgzkx.jpg",
+        " https://res.cloudinary.com/dprm4dd8k/image/upload/v1759159236/Hugo_Boss_kbira_mdoj5d.jpg",
       id: 56,
       imageUrl1:
-        "https://res.cloudinary.com/dlxpttd8b/image/upload/v1743624756/Design-ohne-Titel-2024-02-20T114210.296_fgbkgg.png",
+        " https://res.cloudinary.com/dprm4dd8k/image/upload/v1759159236/Hugo_Boss_sghira_b5zgms.png",
       linkUrl: "shop/hugoboss",
     },
 
     {
       title: "GUERLAIN",
       imageUrl:
-        "https://res.cloudinary.com/dlxpttd8b/image/upload/v1744817360/fcMnCkz_ahmrzf.jpg",
+        " https://res.cloudinary.com/dprm4dd8k/image/upload/v1759159235/GUERLAIN_kbira_ogoxjn.jpg",
       id: 57,
       imageUrl1:
-        "https://res.cloudinary.com/dlxpttd8b/image/upload/v1744817372/guerlain_vy9yz9.svg",
+        " https://res.cloudinary.com/dprm4dd8k/image/upload/v1759159235/GUERLAIN_sghira_anxzy9.png",
       linkUrl: "shop/guerlain",
     },
     {
       title: "GUCCI",
       imageUrl:
-        "https://res.cloudinary.com/dlxpttd8b/image/upload/v1744815551/38e690100559269.5f0bc2023b2ed_dyxlro.jpg",
+        " https://res.cloudinary.com/dprm4dd8k/image/upload/v1759159235/gucci_kbira_x9nl1m.jpg",
       id: 58,
       imageUrl1:
-        "https://res.cloudinary.com/dlxpttd8b/image/upload/v1744815566/2a1fd95ec65691394acbbb3fdbe38926_toakjp.jpg",
+        " https://res.cloudinary.com/dprm4dd8k/image/upload/v1759159235/GUCCI_sghira_lrugpd.png",
       linkUrl: "shop/gucci",
     },
     {
       title: "VIKTOR & ROLF",
       imageUrl:
-        "https://res.cloudinary.com/dlxpttd8b/image/upload/v1744817643/814pylohIOL._AC_UF1000_1000_QL80__y9yq6i.jpg",
+        " https://res.cloudinary.com/dhtjosz4e/image/upload/v1759186601/VIKTOR_ROLF_kbira_jsetyj.jpg",
       id: 59,
       imageUrl1:
-        "https://res.cloudinary.com/dlxpttd8b/image/upload/v1744817668/Viktor_Rolf_kix4p9.png",
+        " https://res.cloudinary.com/dhtjosz4e/image/upload/v1759186602/VIKTOR_ROLF_sghira_uqwg5c.png",
       linkUrl: "shop/viktorandrolf",
     },
     {
       title: "Paco Rabanne",
       imageUrl:
-        "https://res.cloudinary.com/dlxpttd8b/image/upload/v1744817736/paco-rabanne-fame-poster-1-600x600_fvqeph.jpg",
+        " https://res.cloudinary.com/dhtjosz4e/image/upload/v1759186580/Paco_Rabanne_kbira_eiw3lv.jpg",
       id: 60,
       imageUrl1:
-        "https://res.cloudinary.com/dlxpttd8b/image/upload/v1744817726/002bac07178d32bbe5cf57e238a876df_rk7t3h.jpg",
+        " https://res.cloudinary.com/dhtjosz4e/image/upload/v1759186579/Paco_Rabanne_sghira_bui84a.png",
       linkUrl: "shop/pacorabanne",
     },
     {
       title: "loius vuitton",
       imageUrl:
-        "https://res.cloudinary.com/dlxpttd8b/image/upload/v1743626503/lV_aif6uj.webp",
+        " https://res.cloudinary.com/dhtjosz4e/image/upload/v1759186530/Louis_Vuitton_kbira_xmu0li.jpg",
       id: 61,
       imageUrl1:
-        "https://res.cloudinary.com/dlxpttd8b/image/upload/v1743626504/o.2747_ovwgpv.jpg",
+        " https://res.cloudinary.com/dhtjosz4e/image/upload/v1759186530/Louis_Vuitton_sghira_kh9wwn.pngg",
 
       linkUrl: "shop/louisvuitton",
     },
     {
       title: "Amouage",
       imageUrl:
-        "https://res.cloudinary.com/dlxpttd8b/image/upload/v1743627042/images_pdcusy.jpg",
+        " https://res.cloudinary.com/dprm4dd8k/image/upload/v1759159208/Amouage_kbira_kr5lyw.jpg",
       id: 62,
       imageUrl1:
-        "https://res.cloudinary.com/dlxpttd8b/image/upload/v1743627149/Nobilis_Logo_1000x1000_Amouage_casmeu.png",
+        " https://res.cloudinary.com/dprm4dd8k/image/upload/v1759159208/Amouage_sghira_pm0lcf.png",
 
       linkUrl: "shop/amouage",
     },
@@ -564,10 +556,10 @@ const INITIAL_STATE = {
     {
       title: "Hermes",
       imageUrl:
-        "https://res.cloudinary.com/dlxpttd8b/image/upload/v1743630519/e695df9d9e7a4bcc809f2676df2db1b0_800x800_dwrmqk.webp",
+        " https://res.cloudinary.com/dprm4dd8k/image/upload/v1759159235/Hermes_kbira_bt2iwg.jpg",
       id: 63,
       imageUrl1:
-        "https://res.cloudinary.com/dlxpttd8b/image/upload/v1743630519/Hermes_ii6wcx.webp",
+        " https://res.cloudinary.com/dprm4dd8k/image/upload/v1759159235/Hermes_sghira_z09afg.jpg",
 
       linkUrl: "shop/hermes",
     },
@@ -575,19 +567,19 @@ const INITIAL_STATE = {
     {
       title: "Armaf",
       imageUrl:
-        "https://res.cloudinary.com/dlxpttd8b/image/upload/v1745533558/s-l1200_klvwx0.jpg",
+        " https://res.cloudinary.com/dhtjosz4e/image/upload/v1759186577/ngt3_jx5wxc.jpg",
       id: 67,
       imageUrl1:
-        "https://res.cloudinary.com/dlxpttd8b/image/upload/v1745533533/o.2068_u4c9nj.jpg",
+        " https://res.cloudinary.com/dhtjosz4e/image/upload/v1759189312/armaf_sghira_kchc4n.png",
       linkUrl: "shop/armaf",
     },
     {
       title: "Birberr",
       imageUrl:
-        "https://res.cloudinary.com/dlxpttd8b/image/upload/v1745533714/s-l400_lerz92.jpg",
+        " https://res.cloudinary.com/dhtjosz4e/image/upload/v1759189417/birber_kbira_thhabn.jpg",
       id: 68,
       imageUrl1:
-        "https://res.cloudinary.com/dlxpttd8b/image/upload/v1745533626/o.1230_eeqaxc.jpg",
+        " https://res.cloudinary.com/dhtjosz4e/image/upload/v1759189416/biber_sghira_ashtbl.png",
       linkUrl: "shop/birberr",
     },
     {
@@ -611,73 +603,73 @@ const INITIAL_STATE = {
     {
       title: "Elie Saab",
       imageUrl:
-        "https://res.cloudinary.com/dlxpttd8b/image/upload/v1745533957/s-l1200_tkmiff.jpg",
+        " https://res.cloudinary.com/dprm4dd8k/image/upload/v1759159228/Elie_Saab_kbira_wvcx5e.jpg",
       id: 71,
       imageUrl1:
-        "https://res.cloudinary.com/dlxpttd8b/image/upload/v1745533935/o.1222_ekpxi0.png",
+        " https://res.cloudinary.com/dprm4dd8k/image/upload/v1759159225/Elie_Saab_sghira_stfclo.png",
       linkUrl: "shop/elie-saab",
     },
     {
       title: "Frederic Malle",
       imageUrl:
-        "https://res.cloudinary.com/dlxpttd8b/image/upload/v1745534094/maxresdefault_wxc3hh.jpg",
+        " https://res.cloudinary.com/dprm4dd8k/image/upload/v1759159226/Frederic_Malle_kbira_rg22dt.jpg",
       id: 72,
       imageUrl1:
-        "https://res.cloudinary.com/dlxpttd8b/image/upload/v1745534070/o.140_ludvyu.jpg",
+        " https://res.cloudinary.com/dprm4dd8k/image/upload/v1759159225/Frederic_Malle_sghira_vdlgrs.png",
       linkUrl: "shop/frederic-malle",
     },
     /*{
       title: "Giardini di Toscana",
       imageUrl:
-        "https://res.cloudinary.com/dlxpttd8b/image/upload/v1745534212/o.IH8n2dqN1Jw_xbzxpt.jpg",
+        " https://res.cloudinary.com/dhtjosz4e/image/upload/v1759190040/giardini_di_tocca_kbira_kxjhon.jpg",
       id: 73,
       imageUrl1:
-        "https://res.cloudinary.com/dlxpttd8b/image/upload/v1745534168/logo-giardini-di-toscana_tks3kx.jpg",
+        " https://res.cloudinary.com/dhtjosz4e/image/upload/v1759190040/giardini_di_tocca_sghira_vazjik.jpg",
       linkUrl: "shop/giardini-di-toscana",
     },*/
     {
       title: "HFC Devil’s",
       imageUrl:
-        "https://res.cloudinary.com/dlxpttd8b/image/upload/v1745534307/DevilsIntrigueBox_Bottle_g7k7p3.jpg",
+        " https://res.cloudinary.com/dprm4dd8k/image/upload/v1759159235/HFC_Devil_s_kbira_bcllya.jpg",
       id: 74,
       imageUrl1:
-        "https://res.cloudinary.com/dlxpttd8b/image/upload/v1745534329/355778_p2u9wa.jpg",
+        " https://res.cloudinary.com/dprm4dd8k/image/upload/v1759159236/HFC_Devil_s_sghira_lxpzeb.jpg",
       linkUrl: "shop/hfc-devils",
     },
     {
       title: "Kayali",
       imageUrl:
-        "https://res.cloudinary.com/dlxpttd8b/image/upload/v1745534412/Kayali-cafe-oud-19-1_ufziws.jpg",
+        " https://res.cloudinary.com/dprm4dd8k/image/upload/v1759159246/Kayali_kbira_mjzndy.jpg",
       id: 75,
       imageUrl1:
-        "https://res.cloudinary.com/dlxpttd8b/image/upload/v1745534395/SQUARE-LOGO_pkxzlg.jpg",
+        " https://res.cloudinary.com/dprm4dd8k/image/upload/v1759159246/Kayali_sghira_bukfxv.jpg",
       linkUrl: "shop/kayali",
     },
     {
       title: "Lacoste",
       imageUrl:
-        "https://res.cloudinary.com/dlxpttd8b/image/upload/v1745534524/9d1803608730a9ba19e0aed6be84fe6e_sienkf.jpg",
+        " https://res.cloudinary.com/dhtjosz4e/image/upload/v1759186503/Lacoste_kbira_gsunub.jpg",
       id: 76,
       imageUrl1:
-        "https://res.cloudinary.com/dlxpttd8b/image/upload/v1745534462/4bca96ce2ae71fa25576cd9c1f1a1ff1_a0twtn.jpg",
+        " https://res.cloudinary.com/dhtjosz4e/image/upload/v1759186504/Lacoste_sghira_fy2tmp.png",
       linkUrl: "shop/lacoste",
     },
     {
       title: "Maison Crivelli",
       imageUrl:
-        "https://res.cloudinary.com/dlxpttd8b/image/upload/v1745534650/mobile_cdd32419-3acc-4968-810b-2e49de137ac7_wuohow.png",
+        " https://res.cloudinary.com/dhtjosz4e/image/upload/v1759186556/Maison_Crivelli_kbira_wswhdn.jpg",
       id: 77,
       imageUrl1:
-        "https://res.cloudinary.com/dlxpttd8b/image/upload/v1745534589/o.3591_ekcdbp.jpg",
+        " https://res.cloudinary.com/dhtjosz4e/image/upload/v1759186556/Maison_Crivelli_sghira_wwdeqv.jpg",
       linkUrl: "shop/maison-crivelli",
     },
     {
       title: "Maison Francis Kurkdjian",
       imageUrl:
-        "https://res.cloudinary.com/dlxpttd8b/image/upload/v1745614390/MFK-BR540-2022-70ml-duo-1080x1080-nologo_maszxg.jpg",
+        " https://res.cloudinary.com/dhtjosz4e/image/upload/v1759186556/Maison_Francis_Kurkdjian_kbir_hdffvj.jpg",
       id: 78,
       imageUrl1:
-        "https://res.cloudinary.com/dlxpttd8b/image/upload/v1745614372/designers-maison-francis-kurkdjian-1_gwfenn.jpg",
+        " https://res.cloudinary.com/dhtjosz4e/image/upload/v1759186556/maison_francis_kurdijan_sghira_h8rkqb.jpg",
       linkUrl: "shop/maison-francis-kurkdjian",
     } /*
     {
@@ -701,46 +693,46 @@ const INITIAL_STATE = {
     {
       title: "Matière Première",
       imageUrl:
-        "https://res.cloudinary.com/dlxpttd8b/image/upload/v1745614960/MATIERE-PREMIER-Brand-Banner-Campomarzio70_bgqe3u.webp",
+        " https://res.cloudinary.com/dhtjosz4e/image/upload/v1759186563/Mati%C3%A8re_Premi%C3%A8re_kbira_nq1yki.jpg ",
       id: 81,
       imageUrl1:
-        "https://res.cloudinary.com/dlxpttd8b/image/upload/v1745614957/images_1_s6jqsk.png",
+        " https://res.cloudinary.com/dhtjosz4e/image/upload/v1759186595/Mati%C3%A8re_Premi%C3%A8re_sghira_y3rpmy.png ",
       linkUrl: "shop/matiere-premiere",
     },
     /* {
       title: "Memo Marfa",
       imageUrl:
-        "https://res.cloudinary.com/dlxpttd8b/image/upload/v1745615064/3x30_test_lum_1_-_Grande_144e4544-9d8a-4580-9cf0-b80c46f2c0b1_gnm65x.jpg",
+        " https://res.cloudinary.com/dhtjosz4e/image/upload/v1759190791/memo_kbira_kcaw3g.jpg ",
       id: 82,
       imageUrl1:
-        "https://res.cloudinary.com/dlxpttd8b/image/upload/v1745615251/f3e288f977fc6851f8a4b4ad90d0af4b_kyhfkw.webp",
+        " https://res.cloudinary.com/dhtjosz4e/image/upload/v1759190791/memo_sghira_n8lian.png ",
       linkUrl: "shop/memo-marfa",
     },*/
     {
       title: "Molecule",
       imageUrl:
-        "https://res.cloudinary.com/dlxpttd8b/image/upload/v1745615359/Collection_2_896x1116_46d4c745-d11d-4dae-ba8d-97d6bb78a4b6_ieiz5r.jpg",
+        " https://res.cloudinary.com/dhtjosz4e/image/upload/v1759186585/Molecule_kbira_ug4krg.jpg ",
       id: 83,
       imageUrl1:
-        "https://res.cloudinary.com/dlxpttd8b/image/upload/v1745615382/Molecule_Niche_Perfume_Tel_Aviv_bd1eda8d-3355-4b3c-a61e-ee3b12d749b3_lgpafb.png",
+        " https://res.cloudinary.com/dhtjosz4e/image/upload/v1759186575/Molecule_sghira_frjlxq.png",
       linkUrl: "shop/molecule",
     },
     {
       title: "Moschino",
       imageUrl:
-        "https://res.cloudinary.com/dlxpttd8b/image/upload/v1745615491/linda-evangelista-moschino-fresh-couture-01-620x864_iqyiwj.jpg",
+        " https://res.cloudinary.com/dhtjosz4e/image/upload/v1759186575/Moschino_kbira_o1exvg.jpg ",
       id: 84,
       imageUrl1:
-        "https://res.cloudinary.com/dlxpttd8b/image/upload/v1745615548/o.85_whnjwy.jpg",
+        " https://res.cloudinary.com/dhtjosz4e/image/upload/v1759186576/Moschino_sghira_g58ga5.jpg ",
       linkUrl: "shop/moschino",
     },
     {
       title: "Salvatore Ferragamo",
       imageUrl:
-        "https://res.cloudinary.com/dlxpttd8b/image/upload/v1745615605/6baaf1208746eaa72f5bc651e8d479d9_gy3z0n.jpg",
+        " https://res.cloudinary.com/dhtjosz4e/image/upload/v1759186586/Salvatore_Ferragamo_kira_rt4h7p.jpg",
       id: 85,
       imageUrl1:
-        "https://res.cloudinary.com/dlxpttd8b/image/upload/v1745615662/d6f8d64e605c29f4838816b6da1b0fc0_o9wnaa.jpg",
+        " https://res.cloudinary.com/dhtjosz4e/image/upload/v1759186586/Salvatore_Ferragamo_sghir_vovfi8.png",
       linkUrl: "shop/salvatore-ferragamo",
     },
     /*
@@ -767,163 +759,163 @@ const INITIAL_STATE = {
     {
       title: "Marc jacob",
       imageUrl:
-        "https://res.cloudinary.com/dlxpttd8b/image/upload/v1758815352/mj-daisy-eau-so-intense-olfactive-v3_k2e5tg.jpg",
+        " https://res.cloudinary.com/dhtjosz4e/image/upload/v1759186561/Marc_jacob_kbira_pqa0yi.jpg",
       id: 93,
       imageUrl1:
-        "https://res.cloudinary.com/dlxpttd8b/image/upload/v1758815331/marc-jacobs-1_ewl11b.jpg",
+        " https://res.cloudinary.com/dhtjosz4e/image/upload/v1759186562/Marc_jacob_sghira_ptuwut.jpg",
       linkUrl: "shop/marc-jacob",
     },
     {
       title: "Jo Malone",
       imageUrl:
-        "https://res.cloudinary.com/dlxpttd8b/image/upload/v1758815427/J_Malone_collection_dsyvky.jpg",
+        " https://res.cloudinary.com/dprm4dd8k/image/upload/v1759159246/Jo_Malone_kbira_pc13mu.jpg",
       id: 94,
       imageUrl1:
-        "https://res.cloudinary.com/dlxpttd8b/image/upload/v1758815441/JoMalone_Logo_rjwaee.jpg",
+        " https://res.cloudinary.com/dprm4dd8k/image/upload/v1759159246/Jo_Malone_sghira_cb1vkl.png",
       linkUrl: "shop/jo-malone",
     },
     {
       title: "Celine",
       imageUrl:
-        "https://res.cloudinary.com/dlxpttd8b/image/upload/v1758815464/unnamed_ggnvg2.jpg",
+        " https://res.cloudinary.com/dprm4dd8k/image/upload/v1759159211/Celine_kbira_loncgo.jpg",
       id: 95,
       imageUrl1:
-        "https://res.cloudinary.com/dlxpttd8b/image/upload/v1758815474/celine-new-logo-sq_nndppr.jpg",
+        " https://res.cloudinary.com/dprm4dd8k/image/upload/v1759159211/Celine_sghira_jefsnn.png",
       linkUrl: "shop/celine",
     },
     {
       title: "Philosykos",
       imageUrl:
-        "https://res.cloudinary.com/dlxpttd8b/image/upload/v1758815591/philosykos-diptyque-1_tx5par.webp",
+        " https://res.cloudinary.com/dhtjosz4e/image/upload/v1759186586/Philosykos_kbira_mhpyll.jpg",
       id: 96,
       imageUrl1:
-        "https://res.cloudinary.com/dlxpttd8b/image/upload/v1758815663/philosykoslogo700_wdhiag.jpg",
+        " https://res.cloudinary.com/dhtjosz4e/image/upload/v1759186580/Philosykos_sghira_grsqdg.png",
       linkUrl: "shop/philosykos",
     },
     {
       title: "Mirabilis",
       imageUrl:
-        "https://res.cloudinary.com/dlxpttd8b/image/upload/v1758815760/06373d226105245.Y3JvcCwxNDAwLDEwOTUsMCww_go1cjb.png",
+        " https://res.cloudinary.com/dhtjosz4e/image/upload/v1759186570/Mirabilis_kbira_bp4zyl.jpg",
       id: 97,
       imageUrl1:
-        "https://res.cloudinary.com/dlxpttd8b/image/upload/v1758815801/Mirabilis-Logo-Web_m7tsxw.png",
+        " https://res.cloudinary.com/dhtjosz4e/image/upload/v1759186570/Mirabilis_sghira_whx2rv.png",
       linkUrl: "shop/mirabilis",
     },
     {
       title: "Trussardi",
       imageUrl:
-        "https://res.cloudinary.com/dlxpttd8b/image/upload/v1758815882/trussardi_parfums_1911_donna_e_uomo_d0qg5e.jpg",
+        " https://res.cloudinary.com/dhtjosz4e/image/upload/v1759186591/trusardi_kbira_hxihdc.jpg",
       id: 98,
       imageUrl1:
-        "https://res.cloudinary.com/dlxpttd8b/image/upload/v1758815855/o.114_ptrdfv.jpg",
+        " https://res.cloudinary.com/dhtjosz4e/image/upload/v1759186591/Trussardi_sghira_i1pwzf.png",
       linkUrl: "shop/trussardi",
     },
     {
       title: "Billie Eilish",
       imageUrl:
-        "https://res.cloudinary.com/dlxpttd8b/image/upload/v1758815930/71ZDTQBLtFL._UF1000_1000_QL80__jg4jfy.jpg",
+        " https://res.cloudinary.com/dprm4dd8k/image/upload/v1759159207/Billie_Eilish_kbira_djysjf.jpg",
       id: 99,
       imageUrl1:
-        "https://res.cloudinary.com/dlxpttd8b/image/upload/v1758815949/Billie-Eilish-Logo-Small_wyav3j.jpg",
+        " https://res.cloudinary.com/dprm4dd8k/image/upload/v1759159207/Billie_Eilish_sghira_bor3ht.jpg",
       linkUrl: "shop/billie-eilish",
     },
     {
       title: "Giardino",
       imageUrl:
-        "https://res.cloudinary.com/dlxpttd8b/image/upload/v1758816086/61loP1PcxIL._UF350_350_QL80__tn0dgu.jpg",
+        " https://res.cloudinary.com/dprm4dd8k/image/upload/v1759159226/Giardino_kbira_pkd8rd.jpg",
       id: 100,
       imageUrl1:
-        "https://res.cloudinary.com/dlxpttd8b/image/upload/v1758816106/o.5366_t7l9jt.png",
+        " https://res.cloudinary.com/dprm4dd8k/image/upload/v1759159233/Giardino_sghira_oqbnd3.png",
       linkUrl: "shop/giardino",
     },
     {
       title: "Issey Miyake",
       imageUrl:
-        "https://res.cloudinary.com/dlxpttd8b/image/upload/v1758816167/IsseyMiyakePARFUME_itggyx.jpg",
+        " https://res.cloudinary.com/dprm4dd8k/image/upload/v1759159237/Issey_Miyake_kbira_u2sq0c.jpg",
       id: 101,
       imageUrl1:
-        "https://res.cloudinary.com/dlxpttd8b/image/upload/v1758816174/issey-miyake_glmihx.svg",
+        " https://res.cloudinary.com/dprm4dd8k/image/upload/v1759159236/Issey_Miyake_sghira_d9p8b7.png",
       linkUrl: "shop/issey-miyake",
     },
     {
       title: "Club de nuit",
       imageUrl:
-        "https://res.cloudinary.com/dlxpttd8b/image/upload/v1758816224/718qmLxCymL._UF350_350_QL80__joe0bq.jpg",
+        " https://res.cloudinary.com/dprm4dd8k/image/upload/v1759192144/club_de_nuit_kbira_yuupkl.jpg",
       id: 102,
       imageUrl1:
-        "https://res.cloudinary.com/dlxpttd8b/image/upload/v1758816280/375x500.102813_ztnfli.jpg",
+        " https://res.cloudinary.com/dprm4dd8k/image/upload/v1759159211/Club_de_nuit_sghira_bxr8hi.jpg",
       linkUrl: "shop/club-de-nuit",
     },
     {
       title: "Zadi&Voltaire",
       imageUrl:
-        "https://res.cloudinary.com/dlxpttd8b/image/upload/v1758835425/208917-2_rkxi0m.jpg",
+        " https://res.cloudinary.com/dhtjosz4e/image/upload/v1759186607/Zadi_Voltaire_kbira_yr6mxt.jpg",
       id: 103,
       imageUrl1:
-        "https://res.cloudinary.com/dlxpttd8b/image/upload/v1758835454/zadig-voltaire-this-is-her-coffret-eau-de-parfum_jaclsk.jpg",
+        " https://res.cloudinary.com/dhtjosz4e/image/upload/v1759186607/Zadi_Voltaire_sghira_gwn9mc.png",
       linkUrl: "shop/zadi-voltaire",
     },
     {
       title: "Kenzo",
       imageUrl:
-        "https://res.cloudinary.com/dlxpttd8b/image/upload/v1758816435/s-l400_crq1x0.jpg",
+        " https://res.cloudinary.com/dhtjosz4e/image/upload/v1759186492/Kenzo_kbira_oirwum.jpg",
       id: 104,
       imageUrl1:
-        "https://res.cloudinary.com/dlxpttd8b/image/upload/v1758816443/38c9_gukrob.jpg",
+        " https://res.cloudinary.com/dhtjosz4e/image/upload/v1759186492/Kenzo_sghira_pywypj.png",
       linkUrl: "shop/kenzo",
     },
     {
       title: "L‘ARTISAN PARFUMEUR",
       imageUrl:
-        "https://res.cloudinary.com/dlxpttd8b/image/upload/v1758816563/Passage-d-Enfer-100ml-content-banner_gs4jk7.jpg",
+        " https://res.cloudinary.com/dhtjosz4e/image/upload/v1759186476/L_ARTISAN_PARFUMEUR_kbira_ljjgev.jpg",
       id: 105,
       imageUrl1:
-        "https://res.cloudinary.com/dlxpttd8b/image/upload/v1758816610/o.119_g93ptt.jpg",
+        " https://res.cloudinary.com/dhtjosz4e/image/upload/v1759186476/L_ARTISAN_PARFUMEUR_sghira_kzh2ov.jpg",
       linkUrl: "shop/lartisanparfumeur",
     },
     {
       title: "DKNY",
       imageUrl:
-        "https://res.cloudinary.com/dlxpttd8b/image/upload/v1758816668/dkny-000823dk-1_nnkrqe.webp",
+        " https://res.cloudinary.com/dprm4dd8k/image/upload/v1759159224/DKNY_kbira_rigmcx.jpg",
       id: 106,
       imageUrl1:
-        "https://res.cloudinary.com/dlxpttd8b/image/upload/v1758816679/dkny-logo-png_seeklogo-42335_xlazil.png",
+        " https://res.cloudinary.com/dprm4dd8k/image/upload/v1759159224/DKNY_sghira_lwdknh.png",
       linkUrl: "shop/dkny",
     },
     {
       title: "Lattafa",
       imageUrl:
-        "https://res.cloudinary.com/dlxpttd8b/image/upload/v1758816728/Mens_3fb70373-97d6-4a91-94c6-bbbbe55b8c56_ug0zf4.jpg",
+        " https://res.cloudinary.com/dhtjosz4e/image/upload/v1759186518/Lattafa_kbira_ls1klf.jpg",
       id: 107,
       imageUrl1:
-        "https://res.cloudinary.com/dlxpttd8b/image/upload/v1758816737/lattafa-logo-png_seeklogo-511416_h0vdgs.png",
+        " https://res.cloudinary.com/dhtjosz4e/image/upload/v1759186518/Lattafa_sghira_awwya8.png",
       linkUrl: "shop/lattafa",
     },
     {
       title: "DEAR POLLY",
       imageUrl:
-        "https://res.cloudinary.com/dlxpttd8b/image/upload/v1758816754/global_images-p3760298541209-1_egyehu.jpg",
+        " https://res.cloudinary.com/dprm4dd8k/image/upload/v1759159212/DEAR_POLLY_kbira_w3o34i.jpg",
       id: 108,
       imageUrl1:
-        "https://res.cloudinary.com/dlxpttd8b/image/upload/v1758816808/s-l400_acje9p.png",
+        " https://res.cloudinary.com/dprm4dd8k/image/upload/v1759159212/DEAR_POLLY_sghira_rhkv6n.png",
       linkUrl: "shop/dearpolly",
     },
     {
       title: "Roja",
       imageUrl:
-        "https://res.cloudinary.com/dlxpttd8b/image/upload/v1758835723/the-aoud-discovery-collection-discovery-set-roja-parfums-969285_ofcfhn.jpg",
-      id: 108,
+        " https://res.cloudinary.com/dhtjosz4e/image/upload/v1759186585/Roja_kbira_nlvx6x.jpg",
+      id: 109,
       imageUrl1:
-        "https://res.cloudinary.com/dlxpttd8b/image/upload/v1758835750/elysium-pour-homme-parfum-by-roja-parfums-17oz-50-ml-5060399671316_cmmp0f.jpg",
+        " https://res.cloudinary.com/dhtjosz4e/image/upload/v1759186586/Roja_sghira_vchmo8.png",
       linkUrl: "shop/roja",
     },
     {
       title: "andereProdukte",
       imageUrl:
-        "https://res.cloudinary.com/dlxpttd8b/image/upload/v1744819380/bdb156f027f1c83b8884d8b46c1f1361_mja8mu.jpg",
+        " https://res.cloudinary.com/dprm4dd8k/image/upload/v1759159208/Andere_Produkte_kbira_p2nj0d.jpg",
       id: 64,
       imageUrl1:
-        "https://res.cloudinary.com/dlxpttd8b/image/upload/v1744819363/OtherProducts-sml_ovtxkj.jpg",
+        " https://res.cloudinary.com/dprm4dd8k/image/upload/v1759159208/Andere_Produkte_sghira_xbrd5y.png",
 
       linkUrl: "shop/andereprodukte",
     },
