@@ -118,6 +118,9 @@ class SignIn extends React.Component {
               </CustomButton>
             </div>
           </form>
+          <p className="signup-link">
+            Don’t have an account? <a href="#signup-section">Sign up here</a>
+          </p>
         </div>
       </div>
     );
