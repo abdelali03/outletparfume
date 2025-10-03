@@ -3,6 +3,7 @@ import { db } from "./firebase/firebase.utils.js";
 
 // Preis je Stückzahl
 const preise = [
+  { stueckzahl: "1", alterPreis: "34,99€", neuerPreis: "26,99€" },
   { stueckzahl: "5", alterPreis: "34,99€", neuerPreis: "26,99€" },
   { stueckzahl: "10", alterPreis: "34,99€", neuerPreis: "26,99€" },
   { stueckzahl: "20", alterPreis: "29,99€", neuerPreis: "24,99€" },
@@ -69,27 +70,42 @@ const festpreise = [
   { marke: "CLIVE CHRISTIAN LUXUS", preis1020: "34,99€", preis50100: "29,99€" },
 ];
 
+// NEW: Sonderangebote (can be empty [])
+const sonderangebote = [
+  { titel: "Sommer-Deal", alterPreis: "29,99€", neuerPreis: "21,99€" },
+  { titel: "Bundle Special", alterPreis: "49,99€", neuerPreis: "39,99€" },
+  { titel: "Bundle Special", alterPreis: "49,99€", neuerPreis: "39,99€" },
+];
+
 const storePreislisteData = async () => {
   try {
-    // Definiere deine Collection "preisliste"
     const preislisteRef = collection(db, "preisliste");
 
-    // Füge ein Dokument für Stückzahlpreise hinzu
+    // Stückzahlpreise
     await addDoc(preislisteRef, {
       type: "stueckzahl",
       items: preise,
     });
 
-    // Füge ein Dokument für Festpreise hinzu
+    // Festpreise
     await addDoc(preislisteRef, {
       type: "festpreise",
       items: festpreise,
     });
 
-    console.log("Preisliste-Daten wurden erfolgreich gespeichert!");
+    // NEW: Sonderangebote
+    await addDoc(preislisteRef, {
+      type: "sonderangebote",
+      items: sonderangebote, // or [] if you don't want initial items
+    });
+
+    console.log(
+      "Preisliste-Daten wurden erfolgreich gespeichert (inkl. Sonderangebote)!"
+    );
   } catch (error) {
     console.error("Fehler beim Speichern der Preisliste-Daten: ", error);
   }
 };
 
 storePreislisteData();
+export default storePreislisteData;

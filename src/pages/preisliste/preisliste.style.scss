@@ -3,28 +3,134 @@
   margin: auto;
   padding: 30px 20px;
   text-align: center;
-  background: linear-gradient(
-    135deg,
-    #f6d9d2,
-    #ecbdc6
-  ); /* Soft pink gradient background */
-  border-radius: 15px; /* Rounded corners for elegance */
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  background: linear-gradient(135deg, #f6d9d2, #ecbdc6);
+  border-radius: 15px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 
   .title {
     font-size: 2.2rem;
     margin-bottom: 30px;
     font-weight: bold;
-    color: #9283a9; /* Neutral purple for the title */
+    color: #9283a9;
     text-transform: uppercase;
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+  }
+
+  .controls {
+    margin-bottom: 20px;
+
+    .hint {
+      margin: 0 0 8px 0;
+      font-size: 0.95rem;
+      color: #5a4f66;
+      opacity: 0.9;
+    }
+  }
+
+  .button-group {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .tab-btn {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 14px;
+    border: 2px solid transparent;
+    border-radius: 999px;
+    background: #ffffffcc;
+    color: #3f3f46;
+    font-weight: 700;
+    cursor: pointer;
+    transition: transform 0.06s ease, box-shadow 0.2s ease, background 0.2s ease,
+      border-color 0.2s ease;
+    outline: none;
+
+    &:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 6px 14px rgba(0, 0, 0, 0.12);
+    }
+    &:focus-visible {
+      border-color: #222;
+      box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.1);
+    }
+
+    .badge {
+      min-width: 24px;
+      height: 24px;
+      padding: 0 8px;
+      border-radius: 999px;
+      font-size: 0.85rem;
+      line-height: 24px;
+      text-align: center;
+      background: rgba(0, 0, 0, 0.08);
+      color: #222;
+      font-weight: 800;
+    }
+  }
+
+  /* Farbvarianten Tabs */
+  .btn--stueckzahl {
+    border-color: #3b82f680; /* blue-500 @ 50% */
+    .badge {
+      background: #3b82f61a;
+      color: #1e3a8a;
+    }
+    &.active {
+      background: linear-gradient(135deg, #3b82f6, #2563eb);
+      color: #fff;
+      .badge {
+        background: rgba(255, 255, 255, 0.22);
+        color: #fff;
+      }
+      box-shadow: 0 8px 18px rgba(37, 99, 235, 0.35);
+    }
+  }
+  .btn--festpreise {
+    border-color: #8b5cf680; /* violet-500 */
+    .badge {
+      background: #8b5cf61a;
+      color: #4c1d95;
+    }
+    &.active {
+      background: linear-gradient(135deg, #8b5cf6, #7c3aed);
+      color: #fff;
+      .badge {
+        background: rgba(255, 255, 255, 0.22);
+        color: #fff;
+      }
+      box-shadow: 0 8px 18px rgba(124, 58, 237, 0.35);
+    }
+  }
+  .btn--sonderangebote {
+    border-color: #22c55e80; /* green-500 */
+    .badge {
+      background: #22c55e1a;
+      color: #065f46;
+    }
+    &.active {
+      background: linear-gradient(135deg, #22c55e, #16a34a);
+      color: #fff;
+      .badge {
+        background: rgba(255, 255, 255, 0.22);
+        color: #fff;
+      }
+      box-shadow: 0 8px 18px rgba(34, 197, 94, 0.35);
+    }
   }
 
   .preisliste-tabelle {
     width: 100%;
     border-collapse: collapse;
     margin-bottom: 20px;
-    font-family: "Open Sans", sans-serif; /* Elegant font for the table */
+    font-family: "Open Sans", sans-serif;
+    margin-top: 14px;
+    border-radius: 12px;
+    overflow: hidden;
 
     th,
     td {
@@ -32,39 +138,40 @@
       padding: 15px;
       font-size: 1rem;
       text-align: left;
-      color: #4a4a4a; /* Neutral dark gray for text */
+      color: #4a4a4a;
     }
 
     th {
-      background-color: #d8a9c1; /* Light pink-purple for header */
-      color: #fff; /* White text for contrast */
+      background-color: #d8a9c1;
+      color: #fff;
       font-size: 1.1rem;
       text-transform: uppercase;
     }
 
     tbody tr:nth-child(even) {
-      background-color: #f9f9f9; /* Light gray for alternating rows */
+      background-color: #f9f9f9;
     }
-
     tbody tr:nth-child(odd) {
-      background-color: #ffffff; /* White for alternating rows */
+      background-color: #ffffff;
     }
 
     tbody tr:hover {
-      background-color: #f6d9d2; /* Highlight row on hover */
+      background-color: #f6d9d2;
       transition: background-color 0.3s ease;
     }
 
     .brand-name {
-      font-weight: bold;
-      font-size: 1.1rem;
-      color: #d81b60; /* Rose pink for brand names */
+      font-weight: 700;
     }
 
-    .price {
-      font-weight: bold;
-      font-size: 1.1rem;
-      color: #4a4a4a; /* Neutral dark gray for prices */
+    /* Preise: alt durchgestrichen, neu hervorgehoben */
+    td.old-price {
+      text-decoration: line-through;
+      color: #a1a1aa; /* helleres Grau */
+    }
+    td.new-price {
+      font-weight: 800;
+      color: #16a34a; /* grün für Ersparnis */
     }
   }
 
@@ -74,6 +181,6 @@
     color: #444;
     font-style: italic;
     font-size: 1rem;
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
   }
 }

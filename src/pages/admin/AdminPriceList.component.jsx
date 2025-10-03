@@ -7,36 +7,38 @@ const AdminPriceList = () => {
   // Zustände für Preislisten-Daten
   const [stueckzahlList, setStueckzahlList] = useState([]);
   const [festpreiseList, setFestpreiseList] = useState([]);
+  const [sonderangeboteList, setSonderangeboteList] = useState([]);
 
   // Zum temporären Speichern von Änderungen (Editiermodus)
   const [editing, setEditing] = useState({
-    type: null, // "stueckzahl" oder "festpreise"
+    type: null, // "stueckzahl" | "festpreise" | "sonderangebote"
     index: null,
     field: "",
     value: "",
   });
 
-  // Lade die Preislisten-Daten aus der Collection "preisliste"
+  // Preislisten laden (ohne Auto-Create)
   useEffect(() => {
     const fetchPriceLists = async () => {
       try {
         const preislisteRef = collection(db, "preisliste");
         const snapshot = await getDocs(preislisteRef);
+
         let stueckzahlItems = [];
         let festpreiseItems = [];
+        let sonderangeboteItems = [];
 
         snapshot.docs.forEach((docSnap) => {
           const data = docSnap.data();
-          if (data.type === "stueckzahl") {
-            stueckzahlItems = data.items;
-          }
-          if (data.type === "festpreise") {
-            festpreiseItems = data.items;
-          }
+          if (data?.type === "stueckzahl") stueckzahlItems = data.items || [];
+          if (data?.type === "festpreise") festpreiseItems = data.items || [];
+          if (data?.type === "sonderangebote")
+            sonderangeboteItems = data.items || [];
         });
 
         setStueckzahlList(stueckzahlItems);
         setFestpreiseList(festpreiseItems);
+        setSonderangeboteList(sonderangeboteItems);
       } catch (error) {
         console.error("Fehler beim Laden der Preislisten:", error);
       }
@@ -48,14 +50,12 @@ const AdminPriceList = () => {
   // Aktualisierung eines spezifischen Elements in einem Array
   const updatePriceListItem = async (listType) => {
     try {
-      // Hole das Dokument anhand des Typs
+      // Dokument-ID anhand des Typs ermitteln (wie bei den anderen)
       const preislisteColRef = collection(db, "preisliste");
       const snapshot = await getDocs(preislisteColRef);
       let docId = "";
       snapshot.docs.forEach((docSnap) => {
-        if (docSnap.data().type === listType) {
-          docId = docSnap.id;
-        }
+        if (docSnap.data()?.type === listType) docId = docSnap.id;
       });
 
       if (!docId) {
@@ -63,7 +63,7 @@ const AdminPriceList = () => {
         return;
       }
 
-      // Erstelle Kopie der aktuellen Liste
+      // Liste kopieren & Feld aktualisieren
       let updatedItems;
       if (listType === "stueckzahl") {
         updatedItems = stueckzahlList.map((item, idx) =>
@@ -77,9 +77,15 @@ const AdminPriceList = () => {
             ? { ...item, [editing.field]: editing.value }
             : item
         );
+      } else if (listType === "sonderangebote") {
+        updatedItems = sonderangeboteList.map((item, idx) =>
+          idx === editing.index
+            ? { ...item, [editing.field]: editing.value }
+            : item
+        );
       }
 
-      // Aktualisiere Firebase-Dokument
+      // Firestore aktualisieren
       const docRef = doc(db, "preisliste", docId);
       await setDoc(
         docRef,
@@ -87,14 +93,12 @@ const AdminPriceList = () => {
         { merge: true }
       );
 
-      // Aktualisiere den State lokal
-      if (listType === "stueckzahl") {
-        setStueckzahlList(updatedItems);
-      } else {
-        setFestpreiseList(updatedItems);
-      }
+      // State aktualisieren
+      if (listType === "stueckzahl") setStueckzahlList(updatedItems);
+      else if (listType === "festpreise") setFestpreiseList(updatedItems);
+      else setSonderangeboteList(updatedItems);
 
-      // Lösche den Editiermodus
+      // Editiermodus zurücksetzen
       setEditing({ type: null, index: null, field: "", value: "" });
     } catch (error) {
       console.error("Fehler beim Aktualisieren:", error);
@@ -103,13 +107,19 @@ const AdminPriceList = () => {
 
   // Startet den Editiervorgang eines Feldes
   const startEditing = (listType, index, field, currentValue) => {
-    setEditing({ type: listType, index, field, value: currentValue });
+    setEditing({
+      type: listType,
+      index,
+      field,
+      value: String(currentValue ?? ""),
+    });
   };
 
   return (
     <div className="admin-price-list">
       <h2>Preislisten bearbeiten</h2>
 
+      {/* Stückzahl */}
       <div className="price-section">
         <h3>Preis je Stückzahl</h3>
         <table>
@@ -192,6 +202,7 @@ const AdminPriceList = () => {
         </table>
       </div>
 
+      {/* Festpreise */}
       <div className="price-section">
         <h3>Festpreise je Marke</h3>
         <table>
@@ -270,6 +281,125 @@ const AdminPriceList = () => {
                 </td>
               </tr>
             ))}
+          </tbody>
+        </table>
+      </div>
+
+      {/* Sonderangebote – nur bearbeiten/speichern */}
+      <div className="price-section">
+        <h3>Sonderangebote</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>Titel</th>
+              <th>Alter Preis</th>
+              <th>Neuer Preis</th>
+              <th>Aktion</th>
+            </tr>
+          </thead>
+          <tbody>
+            {sonderangeboteList.map((item, index) => (
+              <tr key={index}>
+                <td>
+                  {editing.type === "sonderangebote" &&
+                  editing.index === index &&
+                  editing.field === "titel" ? (
+                    <input
+                      type="text"
+                      value={editing.value}
+                      onChange={(e) =>
+                        setEditing({ ...editing, value: e.target.value })
+                      }
+                    />
+                  ) : (
+                    item.titel
+                  )}
+                  <button
+                    onClick={() =>
+                      startEditing(
+                        "sonderangebote",
+                        index,
+                        "titel",
+                        item.titel ?? ""
+                      )
+                    }
+                  >
+                    Edit
+                  </button>
+                </td>
+                <td>
+                  {editing.type === "sonderangebote" &&
+                  editing.index === index &&
+                  editing.field === "alterPreis" ? (
+                    <input
+                      type="text"
+                      value={editing.value}
+                      onChange={(e) =>
+                        setEditing({ ...editing, value: e.target.value })
+                      }
+                    />
+                  ) : (
+                    item.alterPreis
+                  )}
+                  <button
+                    onClick={() =>
+                      startEditing(
+                        "sonderangebote",
+                        index,
+                        "alterPreis",
+                        item.alterPreis ?? ""
+                      )
+                    }
+                  >
+                    Edit
+                  </button>
+                </td>
+                <td>
+                  {editing.type === "sonderangebote" &&
+                  editing.index === index &&
+                  editing.field === "neuerPreis" ? (
+                    <input
+                      type="text"
+                      value={editing.value}
+                      onChange={(e) =>
+                        setEditing({ ...editing, value: e.target.value })
+                      }
+                    />
+                  ) : (
+                    item.neuerPreis
+                  )}
+                  <button
+                    onClick={() =>
+                      startEditing(
+                        "sonderangebote",
+                        index,
+                        "neuerPreis",
+                        item.neuerPreis ?? ""
+                      )
+                    }
+                  >
+                    Edit
+                  </button>
+                </td>
+                <td>
+                  {editing.type === "sonderangebote" &&
+                  editing.index === index ? (
+                    <button
+                      onClick={() => updatePriceListItem("sonderangebote")}
+                    >
+                      Save
+                    </button>
+                  ) : null}
+                </td>
+              </tr>
+            ))}
+            {sonderangeboteList.length === 0 && (
+              <tr>
+                <td colSpan={4} style={{ opacity: 0.7 }}>
+                  Keine Sonderangebote im Dokument gefunden.
+                </td>
+              </tr>
+            )}
           </tbody>
         </table>
       </div>

@@ -4,9 +4,10 @@ import { db } from "../../firebase/firebase.utils";
 import "./preisliste.style.scss";
 
 const PreislistePage = () => {
-  const [ansicht, setAnsicht] = useState("stueckzahl"); // Standardmäßig Preis je Stückzahl
+  const [ansicht, setAnsicht] = useState("stueckzahl"); // "stueckzahl" | "festpreise" | "sonderangebote"
   const [preise, setPreise] = useState([]); // Daten für "stueckzahl"
   const [festpreise, setFestpreise] = useState([]); // Daten für "festpreise"
+  const [sonderangebote, setSonderangebote] = useState([]); // Daten für "sonderangebote"
 
   useEffect(() => {
     // Daten von Firebase abrufen, sobald die Komponente geladen wird
@@ -14,22 +15,22 @@ const PreislistePage = () => {
       try {
         const priceListCol = collection(db, "preisliste");
         const priceListSnapshot = await getDocs(priceListCol);
+
         let stueckzahlItems = [];
         let festpreiseItems = [];
+        let sonderangeboteItems = [];
 
-        // Gehe durch alle Dokumente in der Collection
-        priceListSnapshot.docs.forEach((doc) => {
-          const data = doc.data();
-          if (data.type === "stueckzahl") {
-            stueckzahlItems = data.items;
-          }
-          if (data.type === "festpreise") {
-            festpreiseItems = data.items;
-          }
+        priceListSnapshot.docs.forEach((docSnap) => {
+          const data = docSnap.data();
+          if (data?.type === "stueckzahl") stueckzahlItems = data.items || [];
+          if (data?.type === "festpreise") festpreiseItems = data.items || [];
+          if (data?.type === "sonderangebote")
+            sonderangeboteItems = data.items || [];
         });
 
         setPreise(stueckzahlItems);
         setFestpreise(festpreiseItems);
+        setSonderangebote(sonderangeboteItems);
       } catch (error) {
         console.error("Fehler beim Abrufen der Preislisten:", error);
       }
@@ -42,21 +43,53 @@ const PreislistePage = () => {
     <div className="preisliste-page">
       <h2 className="title">O.U.T.L.E.T.P.A.R.F.U.M – Preisliste</h2>
 
-      <div className="button-group">
-        <button
-          className={ansicht === "stueckzahl" ? "active" : ""}
-          onClick={() => setAnsicht("stueckzahl")}
+      {/* Tabs / Buttons */}
+      <div className="controls">
+        <p className="hint">Wähle eine Kategorie:</p>
+        <div
+          className="button-group"
+          role="tablist"
+          aria-label="Preisliste Kategorien"
         >
-          Preis je Stückzahl
-        </button>
-        <button
-          className={ansicht === "festpreise" ? "active" : ""}
-          onClick={() => setAnsicht("festpreise")}
-        >
-          Festpreise je Marke
-        </button>
+          <button
+            role="tab"
+            aria-selected={ansicht === "stueckzahl"}
+            className={`tab-btn btn--stueckzahl ${
+              ansicht === "stueckzahl" ? "active" : ""
+            }`}
+            onClick={() => setAnsicht("stueckzahl")}
+          >
+            Preis je Stückzahl
+            <span className="badge">{preise.length}</span>
+          </button>
+
+          <button
+            role="tab"
+            aria-selected={ansicht === "festpreise"}
+            className={`tab-btn btn--festpreise ${
+              ansicht === "festpreise" ? "active" : ""
+            }`}
+            onClick={() => setAnsicht("festpreise")}
+          >
+            Festpreise je Marke
+            <span className="badge">{festpreise.length}</span>
+          </button>
+
+          <button
+            role="tab"
+            aria-selected={ansicht === "sonderangebote"}
+            className={`tab-btn btn--sonderangebote ${
+              ansicht === "sonderangebote" ? "active" : ""
+            }`}
+            onClick={() => setAnsicht("sonderangebote")}
+          >
+            Sonderangebote
+            <span className="badge">{sonderangebote.length}</span>
+          </button>
+        </div>
       </div>
 
+      {/* Tabellen je Kategorie */}
       {ansicht === "stueckzahl" && (
         <>
           <table className="preisliste-tabelle">
@@ -71,8 +104,8 @@ const PreislistePage = () => {
               {preise.map((item, index) => (
                 <tr key={index}>
                   <td>{item.stueckzahl}</td>
-                  <td>{item.alterPreis || "–"}</td>
-                  <td>{item.neuerPreis || "–"}</td>
+                  <td className="old-price">{item.alterPreis || "–"}</td>
+                  <td className="new-price">{item.neuerPreis || "–"}</td>
                 </tr>
               ))}
             </tbody>
@@ -87,16 +120,40 @@ const PreislistePage = () => {
             <thead>
               <tr>
                 <th>Marke</th>
-                <th>10–20 Stück</th>
-                <th>50–100 Stück</th>
+                <th>Alter Preis (10–20 St.)</th>
+                <th>Neuer Preis (50–100 St.)</th>
               </tr>
             </thead>
             <tbody>
               {festpreise.map((item, index) => (
                 <tr key={index}>
-                  <td>{item.marke}</td>
-                  <td>{item.preis1020 || "–"}</td>
-                  <td>{item.preis50100 || "–"}</td>
+                  <td className="brand-name">{item.marke}</td>
+                  <td className="old-price">{item.preis1020 || "–"}</td>
+                  <td className="new-price">{item.preis50100 || "–"}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+          <p className="footer-note">✨ ALLES BRS-QUALITÄT ✨</p>
+        </>
+      )}
+
+      {ansicht === "sonderangebote" && (
+        <>
+          <table className="preisliste-tabelle">
+            <thead>
+              <tr>
+                <th>Titel</th>
+                <th>Alter Preis</th>
+                <th>Neuer Preis</th>
+              </tr>
+            </thead>
+            <tbody>
+              {sonderangebote.map((item, index) => (
+                <tr key={index}>
+                  <td>{item.titel}</td>
+                  <td className="old-price">{item.alterPreis || "–"}</td>
+                  <td className="new-price">{item.neuerPreis || "–"}</td>
                 </tr>
               ))}
             </tbody>
