@@ -1,68 +1,215 @@
+/* Reset ein wenig schärfen, ohne global zu stören */
+*:focus-visible {
+  outline: 2px solid #6b4de6;
+  outline-offset: 2px;
+}
+
 .sign-in {
-  width: 380px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin: 0 auto;
-}
+  min-height: 100dvh;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+  background: radial-gradient(
+      1200px 600px at 100% 0%,
+      #ffe3ec 0%,
+      transparent 70%
+    ),
+    radial-gradient(1000px 500px at 0% 100%, #e5e0ff 0%, transparent 70%),
+    linear-gradient(135deg, #faf7ff, #fff);
 
-.title {
-  margin: 10px 0;
-  font-size: 1.5rem;
-  font-weight: bold;
-  color: #333; /* Dark gray text for title */
-}
+  .card {
+    width: min(420px, 92vw);
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(0, 0, 0, 0.06);
+    border-radius: 16px;
+    padding: 28px 24px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08), 0 2px 8px rgba(0, 0, 0, 0.04);
+    animation: cardIn 0.25s ease-out;
+  }
 
-.buttons {
-  display: flex;
-  justify-content: space-between;
-  gap: 10px; /* Add space between buttons */
-  width: 100%; /* Full width of the form */
-}
+  @keyframes cardIn {
+    from {
+      opacity: 0;
+      transform: translateY(6px) scale(0.998);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+  }
 
-button {
-  padding: 12px 25px;
-  border-radius: 5px;
-  font-size: 1rem;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  width: 100%; /* Full width for buttons */
-  border: none; /* Remove any border */
-  outline: none; /* Remove any outline */
-}
+  .title {
+    margin: 4px 0 6px;
+    font-size: 1.75rem;
+    font-weight: 800;
+    letter-spacing: 0.2px;
+    color: #1f1b2d;
+    text-align: center;
+  }
 
-/* Sign-in Button - Black */
-button[type="submit"] {
-  background-color: black; /* Black background */
-  color: white;
-}
+  .subtitle {
+    display: block;
+    margin-bottom: 18px;
+    color: #6b657b;
+    text-align: center;
+    font-size: 0.98rem;
+  }
 
-button[type="submit"]:hover {
-  background-color: #333; /* Darker black shade on hover */
-}
+  .alert {
+    background: #ffe8e8;
+    color: #9b1c1c;
+    border: 1px solid #ffc9c9;
+    padding: 10px 12px;
+    border-radius: 10px;
+    font-size: 0.95rem;
+    margin-bottom: 14px;
+    text-align: left;
+  }
 
-/* Google Sign-in Button - Blue */
-button.isGoogleSignIn {
-  background-color: #4285f4; /* Google Blue */
-  color: white;
-}
+  .form {
+    display: grid;
+    gap: 14px;
 
-button.isGoogleSignIn:hover {
-  background-color: #3367d6; /* Darker blue on hover */
-}
+    /* Falls dein FormInput ein input + label rendert, geben wir ihm Luft */
+    input {
+      width: 100%;
+      padding: 12px 14px;
+      border-radius: 10px;
+      border: 1px solid #dddcef;
+      background: #fff;
+      font-size: 1rem;
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    }
 
-/* FormInput style adjustments */
-input {
-  width: 100%;
-  padding: 10px;
-  margin-bottom: 15px;
-  border-radius: 5px;
-  border: 1px solid #ccc;
-  font-size: 1rem;
-  transition: border 0.3s ease;
-}
+    input:focus {
+      border-color: #6b4de6;
+      box-shadow: 0 0 0 4px rgba(107, 77, 230, 0.12);
+      outline: none;
+    }
 
-input:focus {
-  border-color: #007bff; /* Blue border on focus */
-  outline: none;
+    /* Falls FormInput einen Container hat, optional: */
+    .group,
+    .form-group {
+      margin-bottom: 0;
+    }
+  }
+
+  .password-row {
+    position: relative;
+
+    .pw-toggle {
+      position: absolute;
+      right: 10px;
+      top: 50%;
+      transform: translateY(-50%);
+      border: none;
+      background: transparent;
+      cursor: pointer;
+      font-size: 1.1rem;
+      line-height: 1;
+      padding: 6px;
+      border-radius: 8px;
+      transition: background 0.2s ease, transform 0.06s ease;
+
+      &:hover {
+        background: rgba(0, 0, 0, 0.06);
+        transform: translateY(-50%) scale(1.02);
+      }
+      &:active {
+        transform: translateY(-50%) scale(0.98);
+      }
+    }
+  }
+
+  .buttons {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+    margin-top: 6px;
+
+    @media (min-width: 420px) {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .btn {
+      width: 100%;
+      padding: 12px 16px;
+      border-radius: 12px;
+      border: 1px solid transparent;
+      font-weight: 800;
+      font-size: 0.98rem;
+      letter-spacing: 0.2px;
+      cursor: pointer;
+      transition: transform 0.06s ease, box-shadow 0.2s ease,
+        background 0.2s ease, border-color 0.2s ease;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+
+      &:disabled {
+        opacity: 0.7;
+        cursor: not-allowed;
+        filter: grayscale(0.2);
+      }
+
+      &:hover {
+        transform: translateY(-1px);
+      }
+      &:active {
+        transform: translateY(0);
+      }
+    }
+
+    /* Primäre (schwarz) */
+    .btn-primary {
+      background: linear-gradient(180deg, #1f1f1f, #0f0f0f);
+      color: #fff;
+      box-shadow: 0 8px 18px rgba(0, 0, 0, 0.25);
+
+      &:hover {
+        box-shadow: 0 10px 22px rgba(0, 0, 0, 0.28);
+      }
+      &:focus-visible {
+        box-shadow: 0 0 0 4px rgba(0, 0, 0, 0.18);
+      }
+    }
+
+    /* Google */
+    .btn-google {
+      background: #ffffff;
+      color: #1f1b2d;
+      border: 1px solid #e7e4f6;
+      box-shadow: 0 6px 16px rgba(68, 64, 90, 0.08);
+      position: relative;
+      padding-left: 44px; /* Platz für Icon */
+
+      &:before {
+        content: "";
+        position: absolute;
+        left: 14px;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 20px;
+        height: 20px;
+        border-radius: 4px;
+        background-size: cover;
+        /* Google "G" Icon als Data-URI SVG */
+        background-image: url("data:image/svg+xml;utf8,\
+<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'>\
+<path fill='#FFC107' d='M43.6 20.5H42V20H24v8h11.3C33.9 32.3 29.4 36 24 36 16.8 36 11 30.2 11 23S16.8 10 24 10c3.7 0 7 1.4 9.5 3.8l5.7-5.7C35.5 5 30 3 24 3 12.3 3 3 12.3 3 24s9.3 21 21 21c10.5 0 20-7.6 20-21 0-1.3-.1-2.6-.4-3.5z'/>\
+<path fill='#FF3D00' d='M6.3 14.7l6.6 4.8C14.8 15 19 12 24 12c3.7 0 7 1.4 9.5 3.8l5.7-5.7C35.5 5 30 3 24 3 16 3 9 7.5 6.3 14.7z'/>\
+<path fill='#4CAF50' d='M24 45c6.2 0 11.4-2 15.2-5.5l-7-5.7C30 35.7 27.2 37 24 37c-5.3 0-9.8-3.6-11.4-8.5l-6.6 5C8.7 41 15.8 45 24 45z'/>\
+<path fill='#1976D2' d='M43.6 20.5H42V20H24v8h11.3c-.7 3.3-2.8 6.1-5.6 7.8l7 5.7C39.5 38.6 42 32.9 42 26c0-1.9-.2-3.5-.4-5.5z'/>\
+</svg>");
+      }
+
+      &:hover {
+        background: #fafaff;
+      }
+      &:focus-visible {
+        box-shadow: 0 0 0 4px rgba(107, 77, 230, 0.18);
+      }
+    }
+  }
 }
