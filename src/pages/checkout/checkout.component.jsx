@@ -91,9 +91,11 @@ const CheckoutPage = ({ cartItems, total }) => {
         <div className="header-block">
           <span>Menge</span>
         </div>
-        <div className="header-block">
-          <span>Preis</span>
-        </div>
+        {/* 
+<div className="header-block">
+  <span>Preis</span>
+</div>
+*/}
         <div className="header-block">
           <span>Entfernen</span>
         </div>
@@ -105,9 +107,7 @@ const CheckoutPage = ({ cartItems, total }) => {
         ))}
       </div>
 
-      <div className="total">
-        <span>Gesamtsumme: ${total}</span>
-      </div>
+      <div className="total">{/* <span>Gesamtsumme: ${total}</span> */}</div>
 
       <button className="checkout-button" onClick={handleBuyNow}>
         jetzt einkaufen & PDF erstellen
@@ -145,7 +145,7 @@ const CheckoutPage = ({ cartItems, total }) => {
               <th>Bild</th>
               <th>Name</th>
               <th>Menge</th>
-              <th>Preis</th>
+              {/* <th>Preis</th> */}
             </tr>
           </thead>
           <tbody>
@@ -161,12 +161,12 @@ const CheckoutPage = ({ cartItems, total }) => {
                 </td>
                 <td>{item.name}</td>
                 <td>{item.quantity}</td>
-                <td>${item.price}</td>
+                {/* <td>${item.price}</td> */}
               </tr>
             ))}
           </tbody>
         </table>
-        <h3 className="pdf-total">Gesamtsumme: ${total}</h3>
+        {/* <h3 className="pdf-total">Gesamtsumme: ${total}</h3> */}
       </div>
     </div>
   );

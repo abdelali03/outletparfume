@@ -9,14 +9,28 @@ const CollectionItem = ({ item, addItem }) => {
   const [showModal, setShowModal] = useState(false);
   const [nameExpanded, setNameExpanded] = useState(false);
 
+  // Toast-Message
+  const [notification, setNotification] = useState(null);
+  const [toastVisible, setToastVisible] = useState(false);
+  const [toastKey, setToastKey] = useState(0); // damit Animation erneut abläuft
+
+  const handleAddToCart = () => {
+    addItem(item);
+    // Text für den Toast
+    setNotification(`„${name}“ wurde zum Warenkorb hinzugefügt 🛒`);
+    // Sichtbar machen & Animation neu triggern
+    setToastKey((k) => k + 1);
+    setToastVisible(true);
+    // nach 2.5s ausblenden
+    setTimeout(() => setToastVisible(false), 2500);
+  };
+
   return (
     <>
       <div className="collection-item">
         <div
           className="image"
-          style={{
-            backgroundImage: `url(${imageUrl})`,
-          }}
+          style={{ backgroundImage: `url(${imageUrl})` }}
           onClick={() => setShowModal(true)}
         />
         <div className="collection-footer">
@@ -28,17 +42,31 @@ const CollectionItem = ({ item, addItem }) => {
             {name}
           </span>
         </div>
+
         {quantity === 0 ? (
           <div className="out-of-stock">ausverkauft</div>
         ) : (
-          <CustomButton onClick={() => addItem(item)} inverted>
+          <CustomButton onClick={handleAddToCart} inverted>
             Add to Cart
           </CustomButton>
         )}
       </div>
+
       {showModal && (
         <div className="image-modal" onClick={() => setShowModal(false)}>
           <img src={imageUrl} alt={name} />
+        </div>
+      )}
+
+      {/* Toast-Notification (global positioniert) */}
+      {notification && (
+        <div
+          key={toastKey}
+          className={`toast-notification ${toastVisible ? "show" : ""}`}
+          role="status"
+          aria-live="polite"
+        >
+          {notification}
         </div>
       )}
     </>

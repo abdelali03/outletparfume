@@ -13,7 +13,8 @@ const CheckoutItem = ({
   addQuantity,
   subtractQuantity,
 }) => {
-  const { name, imageUrl, price, quantity } = cartItem;
+  // const { name, imageUrl, price, quantity } = cartItem;
+  const { name, imageUrl, quantity } = cartItem;
 
   return (
     <div className="checkout-item">
@@ -42,7 +43,7 @@ const CheckoutItem = ({
         </div>
       </span>
 
-      <div className="price">{price}</div>
+      {/* <div className="price">{price}</div> */}
       <div className="remove-button" onClick={() => removeItem(cartItem)}>
         &#10005;
       </div>
