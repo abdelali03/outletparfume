@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useState, useRef } from "react";
 import { connect } from "react-redux";
 import { createStructuredSelector } from "reselect";
 import {
@@ -9,9 +9,26 @@ import CheckoutItem from "../../components/checkout-item/checkout-item.component
 import jsPDF from "jspdf";
 import html2canvas from "html2canvas";
 import "./checkout.style.scss";
+import UserInfoModal from "../../components/modal/modal.component";
 
 const CheckoutPage = ({ cartItems, total }) => {
+  const [formData, setFormData] = useState({
+    fullName: "",
+    email: "",
+    address: "",
+    phone: "",
+  });
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const pdfRef = useRef();
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+  };
+
+  const handleBuyNow = () => {
+    setIsModalOpen(true);
+  };
 
   const generatePDF = async () => {
     try {
@@ -19,7 +36,7 @@ const CheckoutPage = ({ cartItems, total }) => {
       const canvas = await html2canvas(element, {
         scale: 2,
         useCORS: true,
-        windowWidth: 794, // ~A4 width in px @72dpi
+        windowWidth: 794,
       });
       const imgData = canvas.toDataURL("image/png");
 
@@ -33,11 +50,11 @@ const CheckoutPage = ({ cartItems, total }) => {
       let heightLeft = imgHeight;
       let position = 0;
 
-      // First page
+      // Erste Seite
       pdf.addImage(imgData, "PNG", 0, position, imgWidth, imgHeight);
       heightLeft -= pdfHeight;
 
-      // Additional pages if needed
+      // Weitere Seiten, falls nötig
       while (heightLeft > 0) {
         position = position - pdfHeight;
         pdf.addPage();
@@ -49,6 +66,17 @@ const CheckoutPage = ({ cartItems, total }) => {
     } catch (error) {
       console.error("Error generating PDF:", error);
     }
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const { fullName, email, address, phone } = formData;
+    if (!fullName || !email || !address || !phone) {
+      alert("Bitte alle Felder ausfüllen.");
+      return;
+    }
+    generatePDF();
+    setIsModalOpen(false);
   };
 
   return (
@@ -64,10 +92,10 @@ const CheckoutPage = ({ cartItems, total }) => {
           <span>Menge</span>
         </div>
         {/* 
-        <div className="header-block">
-          <span>Preis</span>
-        </div>
-        */}
+<div className="header-block">
+  <span>Preis</span>
+</div>
+*/}
         <div className="header-block">
           <span>Entfernen</span>
         </div>
@@ -81,16 +109,35 @@ const CheckoutPage = ({ cartItems, total }) => {
 
       <div className="total">{/* <span>Gesamtsumme: ${total}</span> */}</div>
 
-      <button className="checkout-button" onClick={generatePDF}>
-        PDF erstellen & herunterladen
+      <button className="checkout-button" onClick={handleBuyNow}>
+        jetzt einkaufen & PDF erstellen
       </button>
 
-      {/* Hidden/Offscreen content used for PDF rendering */}
+      {isModalOpen && (
+        <UserInfoModal
+          isOpen={isModalOpen}
+          onRequestClose={() => setIsModalOpen(false)}
+          formData={formData}
+          handleChange={handleChange}
+          handleSubmit={handleSubmit}
+        />
+      )}
+
       <div className="pdf-content" ref={pdfRef}>
         <h2 className="pdf-title">Bestellübersicht</h2>
-
-        {/* Removed user info section as requested */}
-
+        <p>
+          <strong>Name:</strong> {formData.fullName}
+        </p>
+        <p>
+          <strong>Email:</strong> {formData.email}
+        </p>
+        <p>
+          <strong>Addresse:</strong> {formData.address}
+        </p>
+        <p>
+          <strong>Phone:</strong> {formData.phone}
+        </p>
+        <hr />
         <h3>Bestellte Artikel</h3>
         <table className="pdf-table">
           <thead>
@@ -119,7 +166,6 @@ const CheckoutPage = ({ cartItems, total }) => {
             ))}
           </tbody>
         </table>
-
         {/* <h3 className="pdf-total">Gesamtsumme: ${total}</h3> */}
       </div>
     </div>
