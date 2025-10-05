@@ -75,6 +75,15 @@ const sonderangebote = [
   { titel: "Sommer-Deal", alterPreis: "29,99€", neuerPreis: "21,99€" },
   { titel: "Bundle Special", alterPreis: "49,99€", neuerPreis: "39,99€" },
   { titel: "Bundle Special", alterPreis: "49,99€", neuerPreis: "39,99€" },
+  { titel: "Sommer-Deal", alterPreis: "29,99€", neuerPreis: "21,99€" },
+  { titel: "Bundle Special", alterPreis: "49,99€", neuerPreis: "39,99€" },
+  { titel: "Bundle Special", alterPreis: "49,99€", neuerPreis: "39,99€" },
+  { titel: "Sommer-Deal", alterPreis: "29,99€", neuerPreis: "21,99€" },
+  { titel: "Bundle Special", alterPreis: "49,99€", neuerPreis: "39,99€" },
+  { titel: "Bundle Special", alterPreis: "49,99€", neuerPreis: "39,99€" },
+  { titel: "Sommer-Deal", alterPreis: "29,99€", neuerPreis: "21,99€" },
+  { titel: "Bundle Special", alterPreis: "49,99€", neuerPreis: "39,99€" },
+  { titel: "Bundle Special", alterPreis: "49,99€", neuerPreis: "39,99€" },
 ];
 
 const storePreislisteData = async () => {

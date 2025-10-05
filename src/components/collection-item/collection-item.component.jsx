@@ -47,7 +47,7 @@ const CollectionItem = ({ item, addItem }) => {
           <div className="out-of-stock">ausverkauft</div>
         ) : (
           <CustomButton onClick={handleAddToCart} inverted>
-            Add to Cart
+            In den Warenkorb
           </CustomButton>
         )}
       </div>
