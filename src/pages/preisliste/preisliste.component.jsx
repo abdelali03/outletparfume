@@ -120,15 +120,15 @@ const PreislistePage = () => {
             <thead>
               <tr>
                 <th>Marke</th>
-                <th>Alter Preis (10–20 St.)</th>
-                <th>Neuer Preis (50–100 St.)</th>
+                <th>(10–20 St.)</th>
+                <th>(50–100 St.)</th>
               </tr>
             </thead>
             <tbody>
               {festpreise.map((item, index) => (
                 <tr key={index}>
                   <td className="brand-name">{item.marke}</td>
-                  <td className="old-price">{item.preis1020 || "–"}</td>
+                  <td className="new-price">{item.preis1020 || "–"}</td>
                   <td className="new-price">{item.preis50100 || "–"}</td>
                 </tr>
               ))}
