@@ -521,7 +521,7 @@ const INITIAL_STATE = {
       id: 59,
       imageUrl1:
         " https://res.cloudinary.com/dhtjosz4e/image/upload/v1759186602/VIKTOR_ROLF_sghira_uqwg5c.png",
-      linkUrl: "shop/viktorandrolf",
+      linkUrl: "shop/viktorrolf",
     },
     {
       title: "Paco Rabanne",
