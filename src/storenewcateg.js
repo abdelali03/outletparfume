@@ -10,17 +10,10 @@ import {
 
 // New categories to add, starting from ID 93
 const NEW_CATEGORIES = {
-  Roja: {
-    id: 109,
-    title: "Roja",
-    routeName: "roja",
-
-    items: [],
-  },
-  Zadi_Voltair: {
-    id: 110,
-    title: "Zadi & Voltair",
-    routeName: "zadi-voltair",
+  Michael_Kors: {
+    id: 150,
+    title: "MichaelKors",
+    routeName: "michael_kors",
     items: [],
   },
 };

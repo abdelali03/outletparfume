@@ -188,7 +188,7 @@ const Directory = ({ sections, history }) => {
       <div className="full-width-wrapper">
         <MenuItem
           title="Kosmetics"
-          imageUrl1=" https://res.cloudinary.com/dlxpttd8b/image/upload/v1744128386/cosmetics-beauty-makeup-products-logo-design-vector_tlialh.jpg "
+          imageUrl1="https://res.cloudinary.com/dcbcgcujd/image/upload/v1763423504/KOSMETIKS_LOGO_fc1ep9.jpg"
           imageUrl="https://res.cloudinary.com/del97k2lg/image/upload/v1759621558/The-Regulation-of-Cosmetics-scaled_hbczpm.jpg "
           size="large"
           linkUrl="shop/kosmetics"
@@ -197,7 +197,7 @@ const Directory = ({ sections, history }) => {
 
         <MenuItem
           title="parfumesets"
-          imageUrl1=" https://res.cloudinary.com/dlxpttd8b/image/upload/v1745620330/WhatsApp_Image_2025-04-26_%C3%A0_00.31.32_637ae916_vzhwre.jpg"
+          imageUrl1="https://res.cloudinary.com/dcbcgcujd/image/upload/v1763423850/parffum_set_pywbcp.jpg"
           imageUrl="https://res.cloudinary.com/del97k2lg/image/upload/v1759621646/ft2-2-of-4_wtaiau.jpg "
           size=" large "
           linkUrl="shop/parfumesets"

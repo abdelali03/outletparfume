@@ -538,7 +538,7 @@ const INITIAL_STATE = {
         " https://res.cloudinary.com/dhtjosz4e/image/upload/v1759186530/Louis_Vuitton_kbira_xmu0li.jpg",
       id: 61,
       imageUrl1:
-        " https://res.cloudinary.com/dhtjosz4e/image/upload/v1759186530/Louis_Vuitton_sghira_kh9wwn.pngg",
+        "https://res.cloudinary.com/dcbcgcujd/image/upload/v1763423504/LOUIS_VUITTON_LOGO_skgye1.png",
 
       linkUrl: "shop/louisvuitton",
     },
@@ -908,6 +908,16 @@ const INITIAL_STATE = {
       imageUrl1:
         " https://res.cloudinary.com/dhtjosz4e/image/upload/v1759186586/Roja_sghira_vchmo8.png",
       linkUrl: "shop/roja",
+    },
+    {
+      title: "Michael Kors",
+      imageUrl:
+        "https://res.cloudinary.com/dcbcgcujd/image/upload/v1763423505/MICHAEL_OSF_nyetci.jpg",
+      id: 64,
+      imageUrl1:
+        "https://res.cloudinary.com/dcbcgcujd/image/upload/v1763423507/MICHAEL_LOGO_rqkq5y.png",
+
+      linkUrl: "shop/michael_kors",
     },
     {
       title: "andereProdukte",
