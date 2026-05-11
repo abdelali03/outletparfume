@@ -8,17 +8,16 @@ import AdminCarouselImages from "./AdminCarouselImages.component.jsx";
 
 const AdminDashboard = () => {
   const [categories, setCategories] = useState([]);
-  const [outOfStockProducts, setOutOfStockProducts] = useState([]);
   const [newProduct, setNewProduct] = useState({
     name: "",
     imageUrl: "",
     price: 0,
-    quantity: 0,
+    quantity: 1,
     category: "",
   });
   const [activeTab, setActiveTab] = useState("allProducts");
   const [searchTerm, setSearchTerm] = useState("");
-  const [isModalOpen, setIsModalOpen] = useState(false); // Modal visibility state
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   useEffect(() => {
     fetchCategories();
@@ -31,25 +30,9 @@ const AdminDashboard = () => {
       const categoriesList = categoriesSnapshot.docs.map((doc) => ({
         id: doc.id,
         ...doc.data(),
-        items: doc.data().items || [], // Ensure items is always an array
+        items: doc.data().items || [],
       }));
       setCategories(categoriesList);
-
-      const outOfStock = [];
-      categoriesSnapshot.docs.forEach((doc) => {
-        const categoryData = doc.data();
-        const items = categoryData.items || []; // Ensure items is always an array
-        items.forEach((item) => {
-          if (item.quantity <= 0) {
-            outOfStock.push({
-              ...item,
-              categoryId: doc.id,
-              category: categoryData.category,
-            });
-          }
-        });
-      });
-      setOutOfStockProducts(outOfStock);
     } catch (error) {
       console.error("Error fetching categories: ", error);
       setCategories([]);
@@ -65,64 +48,7 @@ const AdminDashboard = () => {
     setSearchTerm(e.target.value);
   };
 
-  const handleAddProduct = async (e) => {
-    e.preventDefault();
-    try {
-      const categoriesCollection = collection(db, "shopData");
-      const categoriesSnapshot = await getDocs(categoriesCollection);
-
-      const categoryDoc = categoriesSnapshot.docs.find(
-        (doc) => doc.data().category === newProduct.category
-      );
-
-      if (categoryDoc) {
-        const categoryData = categoryDoc.data();
-        const categoryDocRef = doc(db, "shopData", categoryDoc.id);
-
-        const updatedItems = [
-          ...categoryData.items,
-          { ...newProduct, id: categoryData.items.length + 1 },
-        ];
-
-        await setDoc(categoryDocRef, { ...categoryData, items: updatedItems });
-        fetchCategories();
-        setNewProduct({
-          name: "",
-          imageUrl: "",
-          price: 0,
-          quantity: 0,
-          category: "",
-        });
-        setIsModalOpen(false); // Close the modal after product is added
-      } else {
-        console.error("Category does not exist in Firestore");
-      }
-    } catch (error) {
-      console.error("Error adding product: ", error);
-    }
-  };
-
-  const handleDeleteProduct = async (categoryId, productId) => {
-    try {
-      const categoryDocRef = doc(db, "shopData", categoryId);
-      const categoryDoc = await getDoc(categoryDocRef);
-
-      if (categoryDoc.exists()) {
-        const categoryData = categoryDoc.data();
-        const updatedItems = categoryData.items.filter(
-          (item) => item.id !== productId
-        );
-        await setDoc(categoryDocRef, { ...categoryData, items: updatedItems });
-        fetchCategories();
-      } else {
-        console.error("Category does not exist");
-      }
-    } catch (error) {
-      console.error("Error deleting product: ", error);
-    }
-  };
-
-  const handleUpdateProduct = async (categoryId, updatedProduct) => {
+  const handleToggleStock = async (categoryId, productId, currentQuantity) => {
     try {
       const categoryDocRef = doc(db, "shopData", categoryId);
       const categoryDoc = await getDoc(categoryDocRef);
@@ -130,69 +56,180 @@ const AdminDashboard = () => {
       if (categoryDoc.exists()) {
         const categoryData = categoryDoc.data();
         const updatedItems = categoryData.items.map((item) =>
-          item.id === updatedProduct.id ? updatedProduct : item
+          item.id === productId
+            ? { ...item, quantity: currentQuantity > 0 ? 0 : 1 }
+            : item,
         );
         await setDoc(categoryDocRef, { ...categoryData, items: updatedItems });
         fetchCategories();
-      } else {
-        console.error("Category does not exist");
       }
     } catch (error) {
-      console.error("Error updating product: ", error);
+      console.error("Error toggling stock: ", error);
     }
   };
 
-  // Ensure category.items and outOfStockProducts are always valid arrays before filtering
-  const filteredCategories = categories.map((category) => ({
-    ...category,
-    items: Array.isArray(category.items)
-      ? category.items.filter((item) =>
-          item.name.toLowerCase().includes(searchTerm.toLowerCase())
-        )
-      : [], // If items is undefined or not an array, default to an empty array
-  }));
+  const handleAddProduct = async (e) => {
+    e.preventDefault();
+    try {
+      const categoryDoc = categories.find(
+        (doc) =>
+          doc.category.toLowerCase() === newProduct.category.toLowerCase(),
+      );
 
-  const filteredOutOfStockProducts = Array.isArray(outOfStockProducts)
-    ? outOfStockProducts.filter((product) =>
-        product.name.toLowerCase().includes(searchTerm.toLowerCase())
-      )
-    : []; // If outOfStockProducts is undefined or not an array, default to an empty array
+      if (categoryDoc) {
+        const categoryDocRef = doc(db, "shopData", categoryDoc.id);
+        const updatedItems = [
+          ...categoryDoc.items,
+          { ...newProduct, id: Date.now() },
+        ];
+        await setDoc(categoryDocRef, { ...categoryDoc, items: updatedItems });
+        fetchCategories();
+        setNewProduct({
+          name: "",
+          imageUrl: "",
+          price: 0,
+          quantity: 1,
+          category: "",
+        });
+        setIsModalOpen(false);
+      } else {
+        alert("Kategorie existiert nicht!");
+      }
+    } catch (error) {
+      console.error("Error adding product: ", error);
+    }
+  };
+
+  const handleDeleteProduct = async (categoryId, productId) => {
+    if (!window.confirm("Dieses Produkt wirklich löschen?")) return;
+    try {
+      const categoryDocRef = doc(db, "shopData", categoryId);
+      const categoryDoc = await getDoc(categoryDocRef);
+      if (categoryDoc.exists()) {
+        const categoryData = categoryDoc.data();
+        const updatedItems = categoryData.items.filter(
+          (item) => item.id !== productId,
+        );
+        await setDoc(categoryDocRef, { ...categoryData, items: updatedItems });
+        fetchCategories();
+      }
+    } catch (error) {
+      console.error("Error deleting product: ", error);
+    }
+  };
+
+  const filteredCategories = categories.filter((category) =>
+    category.category.toLowerCase().includes(searchTerm.toLowerCase()),
+  );
 
   return (
     <div className="admin-dashboard">
-      <h1>Admin Dashboard</h1>
-      <SearchBar handleChange={handleSearchChange} />
-      <div className="tabs">
-        <button onClick={() => setActiveTab("allProducts")}>
-          Alle Produkte
-        </button>
-        <button onClick={() => setActiveTab("outOfStock")}>ausverkauft</button>
-        <button onClick={() => setActiveTab("priceLists")}>Preislisten</button>
-        <button onClick={() => setActiveTab("carouselImages")}>
-          Bilder Editieren
-        </button>
-      </div>
-      {activeTab === "priceLists" && <AdminPriceList />}
-      {activeTab === "carouselImages" && <AdminCarouselImages />}
-      <button
-        className="add-product-button"
-        onClick={() => setIsModalOpen(true)}
-      >
-        Add Product
-      </button>
+      <header className="admin-header">
+        <h1>Admin Dashboard</h1>
+        <div className="search-container">
+          <SearchBar
+            handleChange={handleSearchChange}
+            placeholder="Kategorie suchen..."
+          />
+        </div>
+      </header>
 
-      {/* Modal for adding new product */}
+      <nav className="admin-tabs">
+        <button
+          className={activeTab === "allProducts" ? "active" : ""}
+          onClick={() => setActiveTab("allProducts")}
+        >
+          Produkte
+        </button>
+        <button
+          className={activeTab === "priceLists" ? "active" : ""}
+          onClick={() => setActiveTab("priceLists")}
+        >
+          Preislisten
+        </button>
+        <button
+          className={activeTab === "carouselImages" ? "active" : ""}
+          onClick={() => setActiveTab("carouselImages")}
+        >
+          Bilder
+        </button>
+      </nav>
+
+      <div className="admin-content">
+        {activeTab === "allProducts" && (
+          <>
+            <button
+              className="add-main-button"
+              onClick={() => setIsModalOpen(true)}
+            >
+              + Produkt hinzufügen
+            </button>
+
+            {filteredCategories.map((category) => (
+              <section key={category.id} className="category-section">
+                <h2 className="category-title">{category.category}</h2>
+                <div className="product-grid">
+                  {category.items.map((product) => (
+                    <div
+                      key={product.id}
+                      className={`product-card ${product.quantity <= 0 ? "is-out" : ""}`}
+                    >
+                      <div className="img-container">
+                        <img src={product.imageUrl} alt={product.name} />
+                      </div>
+                      <div className="product-details">
+                        <h4>{product.name}</h4>
+                        <div className="stock-control">
+                          <span className="status-label">
+                            {product.quantity > 0 ? "Verfügbar" : "Ausverkauft"}
+                          </span>
+                          <label className="ios-switch">
+                            <input
+                              type="checkbox"
+                              checked={product.quantity > 0}
+                              onChange={() =>
+                                handleToggleStock(
+                                  category.id,
+                                  product.id,
+                                  product.quantity,
+                                )
+                              }
+                            />
+                            <span className="slider"></span>
+                          </label>
+                        </div>
+                        <button
+                          className="delete-btn"
+                          onClick={() =>
+                            handleDeleteProduct(category.id, product.id)
+                          }
+                        >
+                          Löschen
+                        </button>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </section>
+            ))}
+          </>
+        )}
+
+        {activeTab === "priceLists" && <AdminPriceList />}
+        {activeTab === "carouselImages" && <AdminCarouselImages />}
+      </div>
+
       {isModalOpen && (
         <div className="modal-overlay">
-          <div className="modal-content">
-            <h2>Add New Product</h2>
+          <div className="modal-card">
+            <h2>Neues Produkt</h2>
             <form onSubmit={handleAddProduct}>
               <input
                 type="text"
                 name="name"
                 value={newProduct.name}
                 onChange={handleChange}
-                placeholder="Product Name"
+                placeholder="Name"
                 required
               />
               <input
@@ -200,7 +237,7 @@ const AdminDashboard = () => {
                 name="imageUrl"
                 value={newProduct.imageUrl}
                 onChange={handleChange}
-                placeholder="Image URL"
+                placeholder="Bild URL"
                 required
               />
               <input
@@ -208,15 +245,7 @@ const AdminDashboard = () => {
                 name="price"
                 value={newProduct.price}
                 onChange={handleChange}
-                placeholder="Price"
-                required
-              />
-              <input
-                type="number"
-                name="quantity"
-                value={newProduct.quantity}
-                onChange={handleChange}
-                placeholder="Quantity"
+                placeholder="Preis"
                 required
               />
               <input
@@ -224,136 +253,23 @@ const AdminDashboard = () => {
                 name="category"
                 value={newProduct.category}
                 onChange={handleChange}
-                placeholder="Category"
+                placeholder="Kategorie (z.B. CASAMORATI)"
                 required
               />
-              <button type="submit">Add Product</button>
-              <button
-                type="button"
-                className="cancel-button"
-                onClick={() => setIsModalOpen(false)}
-              >
-                Cancel
-              </button>
+              <div className="modal-actions">
+                <button type="submit" className="save-btn">
+                  Speichern
+                </button>
+                <button
+                  type="button"
+                  className="cancel-btn"
+                  onClick={() => setIsModalOpen(false)}
+                >
+                  Abbrechen
+                </button>
+              </div>
             </form>
           </div>
-        </div>
-      )}
-
-      {activeTab === "allProducts" && (
-        <div className="products-list">
-          <h2>Products</h2>
-          <ul>
-            {filteredCategories.map((category) => (
-              <li key={category.id}>
-                <h3>{category.category}</h3>
-                <ul>
-                  {Array.isArray(category.items) &&
-                    category.items.map((product) => (
-                      <li key={product.id}>
-                        <div>
-                          <h4>{product.name}</h4>
-                          <img src={product.imageUrl} alt={product.name} />
-                          <p>Price: ${product.price}</p>
-                          <p>Quantity: {product.quantity}</p>
-                          <p>Category: {category.category}</p>
-                        </div>
-                        <div className="modify-buttons">
-                          <button
-                            className="delete"
-                            onClick={() =>
-                              handleDeleteProduct(category.id, product.id)
-                            }
-                          >
-                            Delete
-                          </button>
-                          <button
-                            onClick={() =>
-                              handleUpdateProduct(category.id, {
-                                ...product,
-                                quantity: product.quantity + 1,
-                              })
-                            }
-                          >
-                            Increase Quantity
-                          </button>
-                          <button
-                            onClick={() =>
-                              handleUpdateProduct(category.id, {
-                                ...product,
-                                quantity: product.quantity - 1,
-                              })
-                            }
-                          >
-                            Decrease Quantity
-                          </button>
-                          <button
-                            onClick={() =>
-                              handleUpdateProduct(category.id, {
-                                ...product,
-                                price: product.price + 1,
-                              })
-                            }
-                          >
-                            Increase Price
-                          </button>
-                          <button
-                            onClick={() =>
-                              handleUpdateProduct(category.id, {
-                                ...product,
-                                price: product.price - 1,
-                              })
-                            }
-                          >
-                            Decrease Price
-                          </button>
-                        </div>
-                      </li>
-                    ))}
-                </ul>
-              </li>
-            ))}
-          </ul>
-        </div>
-      )}
-      {activeTab === "outOfStock" && (
-        <div className="out-of-stock-list">
-          <h2>Out of Stock Products</h2>
-          <ul>
-            {filteredOutOfStockProducts.map((product) => (
-              <li key={product.id}>
-                <div>
-                  <h4>{product.name}</h4>
-                  <img src={product.imageUrl} alt={product.name} />
-                  <p>Price: ${product.price}</p>
-                  <p>Quantity: {product.quantity}</p>
-                  <p>Category: {product.category}</p>
-                </div>
-                <div className="modify-buttons">
-                  <button
-                    onClick={() =>
-                      handleUpdateProduct(product.categoryId, {
-                        ...product,
-                        quantity: product.quantity + 1,
-                      })
-                    }
-                  >
-                    Increase Quantity
-                  </button>
-                  <button
-                    onClick={() =>
-                      handleUpdateProduct(product.categoryId, {
-                        ...product,
-                        price: product.price + 1,
-                      })
-                    }
-                  >
-                    Increase Price
-                  </button>
-                </div>
-              </li>
-            ))}
-          </ul>
         </div>
       )}
     </div>
