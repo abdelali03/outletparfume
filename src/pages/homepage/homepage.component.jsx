@@ -5,11 +5,17 @@ import "./homepage.style.scss";
 import Directory from "../../components/directoy/directory.component";
 
 const Homepage = () => {
-  const [images, setImages] = useState([]); // Hier speichern wir die aus Firebase geladenen Bild-Links
+  const [images, setImages] = useState([]);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [showWelcome, setShowWelcome] = useState(false);
 
-  // Laden der Bilder aus Firestore
   useEffect(() => {
+    // Check ob der User schon mal da war
+    const hasVisited = localStorage.getItem("hasSeenWelcome");
+    if (!hasVisited) {
+      setShowWelcome(true);
+    }
+
     const fetchImages = async () => {
       try {
         const imagesCollection = collection(db, "images");
@@ -20,25 +26,45 @@ const Homepage = () => {
         console.error("Fehler beim Laden der Bilder:", error);
       }
     };
-
     fetchImages();
   }, []);
 
-  // Carousel-Logik: Automatischer Wechsel, falls Bilder vorhanden sind
+  const closeWelcomePopup = () => {
+    setShowWelcome(false);
+    localStorage.setItem("hasSeenWelcome", "true"); // Merken, dass Popup gesehen wurde
+  };
+
   useEffect(() => {
-    if (images.length === 0) return; // Falls noch keine Bilder geladen sind, nichts tun
+    if (images.length === 0) return;
     const interval = setInterval(() => {
       setCurrentImageIndex((prevIndex) => (prevIndex + 1) % images.length);
-    }, 3000); // Wechselt alle 5 Sekunden
-
+    }, 3000);
     return () => clearInterval(interval);
   }, [images]);
 
   return (
     <div className="homepage">
+      {/* WILLKOMMENS POPUP */}
+      {showWelcome && (
+        <div className="welcome-overlay">
+          <div className="welcome-modal">
+            <div className="sticker">✨</div>
+            <h2>Willkommen bei Outlet Parfum! 🛍️</h2>
+            <p>
+              Entdecke die exklusivsten Düfte zu unschlagbaren Preisen. Schön,
+              dass du da bist! 🌸✨
+            </p>
+            <button className="start-btn" onClick={closeWelcomePopup}>
+              Jetzt stöbern 🚀
+            </button>
+          </div>
+        </div>
+      )}
+
       <div className="homepage-header">
         <h1>Outlet Parfum</h1>
       </div>
+
       <div className="carousel">
         {images.length > 0 ? (
           <img

@@ -1,8 +1,11 @@
+// Variablen für ein konsistentes Design
 $primary-color: #222;
-$accent-color: #34c759; // iOS Green
-$danger-color: #ff3b30; // iOS Red
+$accent-color: #34c759; // iOS Grün
+$danger-color: #ff3b30; // iOS Rot
+$edit-color: #007aff; // iOS Blau
 $bg-color: #f8f9fa;
 $white: #ffffff;
+$shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
 
 .admin-dashboard {
   font-family:
@@ -10,95 +13,126 @@ $white: #ffffff;
   background-color: $bg-color;
   min-height: 100vh;
   padding: 20px;
+  color: #333;
 
+  // Header & Suche
   .admin-header {
     text-align: center;
     margin-bottom: 30px;
+
     h1 {
       font-weight: 300;
       letter-spacing: 2px;
       text-transform: uppercase;
+      margin-bottom: 20px;
     }
+
     .search-container {
       max-width: 500px;
-      margin: 20px auto;
+      margin: 0 auto;
     }
   }
 
+  // Navigation Tabs
   .admin-tabs {
     display: flex;
     justify-content: center;
     gap: 10px;
     margin-bottom: 30px;
     overflow-x: auto;
-    padding-bottom: 10px;
+    padding: 5px 5px 15px 5px;
 
     button {
-      background: none;
+      background: $white;
       border: 1px solid #ddd;
-      padding: 10px 20px;
-      border-radius: 20px;
+      padding: 10px 22px;
+      border-radius: 25px;
       cursor: pointer;
       white-space: nowrap;
-      transition: 0.3s;
+      transition: all 0.3s ease;
+      font-weight: 500;
+
       &.active {
         background: $primary-color;
         color: $white;
         border-color: $primary-color;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      }
+
+      &:hover:not(.active) {
+        background: #eee;
       }
     }
   }
 
+  // Haupt-Button "Produkt hinzufügen"
   .add-main-button {
     display: block;
     width: 100%;
-    max-width: 300px;
+    max-width: 350px;
     margin: 0 auto 40px;
-    padding: 15px;
-    border-radius: 12px;
+    padding: 16px;
+    border-radius: 14px;
     border: none;
     background: $accent-color;
     color: white;
-    font-weight: bold;
+    font-weight: 600;
     cursor: pointer;
-    font-size: 1rem;
-  }
+    font-size: 1.1rem;
+    transition:
+      transform 0.2s,
+      background 0.2s;
 
-  .category-section {
-    margin-bottom: 50px;
-    .category-title {
-      border-bottom: 2px solid $primary-color;
-      display: inline-block;
-      margin-bottom: 20px;
-      padding-bottom: 5px;
-      font-weight: 400;
+    &:hover {
+      background: darken($accent-color, 5%);
+      transform: scale(1.02);
     }
   }
 
+  // Kategorien Sektion
+  .category-section {
+    margin-bottom: 60px;
+
+    .category-title {
+      font-size: 1.4rem;
+      border-bottom: 2px solid $primary-color;
+      display: inline-block;
+      margin-bottom: 25px;
+      padding-bottom: 5px;
+      font-weight: 600;
+      text-transform: uppercase;
+    }
+  }
+
+  // Das Produkt-Grid
   .product-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 20px;
+    gap: 25px;
   }
 
+  // Die Produkt-Card
   .product-card {
     background: $white;
-    border-radius: 16px;
+    border-radius: 20px;
     overflow: hidden;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
-    transition: transform 0.2s;
+    box-shadow: $shadow;
+    transition: transform 0.3s ease;
 
     &:hover {
-      transform: translateY(-5px);
+      transform: translateY(-8px);
     }
+
     &.is-out {
-      opacity: 0.7;
-      filter: grayscale(0.5);
+      opacity: 0.75;
+      .img-container {
+        filter: grayscale(0.8);
+      }
     }
 
     .img-container {
-      height: 200px;
-      background: #eee;
+      height: 220px;
+      background: #f0f0f0;
       img {
         width: 100%;
         height: 100%;
@@ -107,49 +141,76 @@ $white: #ffffff;
     }
 
     .product-details {
-      padding: 15px;
+      padding: 20px;
+
       h4 {
         margin: 0 0 15px;
-        font-size: 1.1rem;
+        font-size: 1.15rem;
+        font-weight: 600;
+        min-height: 2.3rem; // Verhindert Springen bei unterschiedlichen Längen
       }
 
+      // Stock Control (Switch Zeile)
       .stock-control {
         display: flex;
         justify-content: space-between;
         align-items: center;
-        background: #f1f1f1;
-        padding: 10px;
-        border-radius: 10px;
-        margin-bottom: 15px;
+        background: #f2f2f7;
+        padding: 12px 15px;
+        border-radius: 12px;
+        margin-bottom: 18px;
 
         .status-label {
           font-size: 0.9rem;
-          font-weight: 600;
+          font-weight: 700;
+          color: #555;
         }
       }
 
-      .delete-btn {
-        width: 100%;
-        background: none;
-        border: 1px solid #ddd;
-        color: $danger-color;
-        padding: 8px;
-        border-radius: 8px;
-        cursor: pointer;
-        &:hover {
-          background: #fff5f5;
+      // Action Buttons (Bearbeiten & Löschen)
+      .card-actions {
+        display: flex;
+        gap: 10px;
+
+        button {
+          flex: 1;
+          padding: 10px;
+          border-radius: 10px;
+          font-weight: 600;
+          cursor: pointer;
+          font-size: 0.9rem;
+          transition: all 0.2s;
+          border: 1px solid transparent;
+        }
+
+        .edit-btn {
+          background: #e9e9eb;
+          color: $primary-color;
+          &:hover {
+            background: #d1d1d6;
+          }
+        }
+
+        .delete-btn {
+          background: $white;
+          color: $danger-color;
           border-color: $danger-color;
+          &:hover {
+            background: $danger-color;
+            color: $white;
+          }
         }
       }
     }
   }
 
-  /* --- REAL SWITCH CSS --- */
+  /* --- REAL IOS SWITCH --- */
   .ios-switch {
     position: relative;
     display: inline-block;
-    width: 46px;
-    height: 24px;
+    width: 50px;
+    height: 28px;
+
     input {
       opacity: 0;
       width: 0;
@@ -163,86 +224,144 @@ $white: #ffffff;
       left: 0;
       right: 0;
       bottom: 0;
-      background-color: #ccc;
+      background-color: #e9e9eb;
       transition: 0.4s;
       border-radius: 34px;
 
       &:before {
         position: absolute;
         content: "";
-        height: 18px;
-        width: 18px;
+        height: 22px;
+        width: 22px;
         left: 3px;
         bottom: 3px;
         background-color: white;
         transition: 0.4s;
         border-radius: 50%;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
       }
     }
 
     input:checked + .slider {
       background-color: $accent-color;
     }
+
     input:checked + .slider:before {
       transform: translateX(22px);
     }
   }
 
-  /* --- MODAL --- */
+  /* --- MODAL STYLING --- */
   .modal-overlay {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.6);
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(4px);
     display: flex;
     align-items: center;
     justify-content: center;
-    z-index: 1000;
+    z-index: 2000;
     padding: 20px;
   }
+
   .modal-card {
     background: white;
     padding: 30px;
-    border-radius: 20px;
+    border-radius: 24px;
     width: 100%;
-    max-width: 450px;
+    max-width: 480px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+
+    h2 {
+      margin-top: 0;
+      font-weight: 700;
+      margin-bottom: 25px;
+      text-align: center;
+    }
+
+    label {
+      display: block;
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: #8e8e93;
+      margin-bottom: 5px;
+      text-transform: uppercase;
+    }
+
     input {
       width: 100%;
-      padding: 12px;
-      margin-bottom: 15px;
-      border: 1px solid #ddd;
-      border-radius: 8px;
-    }
-    .modal-actions {
-      display: flex;
-      gap: 10px;
-      button {
-        flex: 1;
-        padding: 12px;
-        border-radius: 8px;
-        border: none;
-        cursor: pointer;
+      padding: 14px;
+      margin-bottom: 20px;
+      border: 1px solid #d1d1d6;
+      border-radius: 12px;
+      font-size: 1rem;
+      background: #f2f2f7;
+
+      &:focus {
+        outline: none;
+        border-color: $accent-color;
+        background: $white;
       }
     }
-    .save-btn {
-      background: $primary-color;
-      color: white;
+
+    .modal-actions {
+      display: flex;
+      gap: 12px;
+      margin-top: 10px;
+
+      button {
+        flex: 1;
+        padding: 14px;
+        border-radius: 12px;
+        font-weight: 600;
+        cursor: pointer;
+        font-size: 1rem;
+      }
+
+      .save-btn {
+        background: $primary-color;
+        color: white;
+        border: none;
+        &:hover {
+          background: #444;
+        }
+      }
+
+      .cancel-btn {
+        background: transparent;
+        color: #8e8e93;
+        border: 1px solid #d1d1d6;
+        &:hover {
+          background: #f2f2f7;
+        }
+      }
     }
   }
 }
 
-/* RESPONSIVE */
+/* RESPONSIVE OPTIMIERUNGEN */
 @media (max-width: 600px) {
-  .product-grid {
-    grid-template-columns: 1fr;
-  }
   .admin-dashboard {
-    padding: 10px;
-  }
-  .admin-header h1 {
-    font-size: 1.5rem;
+    padding: 15px 10px;
+
+    .admin-header h1 {
+      font-size: 1.4rem;
+    }
+
+    .product-grid {
+      grid-template-columns: 1fr; // Nur 1 Spalte auf dem Handy
+    }
+
+    .category-section .category-title {
+      font-size: 1.2rem;
+    }
+
+    .add-main-button {
+      padding: 14px;
+      font-size: 1rem;
+    }
   }
 }

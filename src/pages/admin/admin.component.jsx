@@ -8,16 +8,24 @@ import AdminCarouselImages from "./AdminCarouselImages.component.jsx";
 
 const AdminDashboard = () => {
   const [categories, setCategories] = useState([]);
-  const [newProduct, setNewProduct] = useState({
+  const [searchTerm, setSearchTerm] = useState("");
+  const [activeTab, setActiveTab] = useState("allProducts");
+
+  // Modal & Form States
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isEditing, setIsEditing] = useState(false);
+  const [currentEditIds, setCurrentEditIds] = useState({
+    catId: null,
+    prodId: null,
+  });
+
+  const [productForm, setProductForm] = useState({
     name: "",
     imageUrl: "",
     price: 0,
     quantity: 1,
     category: "",
   });
-  const [activeTab, setActiveTab] = useState("allProducts");
-  const [searchTerm, setSearchTerm] = useState("");
-  const [isModalOpen, setIsModalOpen] = useState(false);
 
   useEffect(() => {
     fetchCategories();
@@ -27,94 +35,117 @@ const AdminDashboard = () => {
     try {
       const categoriesCollection = collection(db, "shopData");
       const categoriesSnapshot = await getDocs(categoriesCollection);
-      const categoriesList = categoriesSnapshot.docs.map((doc) => ({
-        id: doc.id,
-        ...doc.data(),
-        items: doc.data().items || [],
-      }));
+      const categoriesList = categoriesSnapshot.docs.map((doc) => {
+        const data = doc.data();
+        return {
+          ...data, // Erst die Daten laden (enthält id: 99)
+          id: doc.id, // DANN die Dokument-ID setzen (überschreibt die 99 mit "billie-eilish")
+          items: data.items || [],
+        };
+      });
       setCategories(categoriesList);
     } catch (error) {
       console.error("Error fetching categories: ", error);
-      setCategories([]);
     }
   };
 
-  const handleChange = (e) => {
+  const handleInputChange = (e) => {
     const { name, value } = e.target;
-    setNewProduct({ ...newProduct, [name]: value });
+    setProductForm({ ...productForm, [name]: value });
   };
 
-  const handleSearchChange = (e) => {
-    setSearchTerm(e.target.value);
+  // Öffnet das Modal zum Erstellen
+  const openAddModal = () => {
+    setIsEditing(false);
+    setProductForm({
+      name: "",
+      imageUrl: "",
+      price: 0,
+      quantity: 1,
+      category: "",
+    });
+    setIsModalOpen(true);
   };
 
-  const handleToggleStock = async (categoryId, productId, currentQuantity) => {
-    try {
-      const categoryDocRef = doc(db, "shopData", categoryId);
-      const categoryDoc = await getDoc(categoryDocRef);
-
-      if (categoryDoc.exists()) {
-        const categoryData = categoryDoc.data();
-        const updatedItems = categoryData.items.map((item) =>
-          item.id === productId
-            ? { ...item, quantity: currentQuantity > 0 ? 0 : 1 }
-            : item,
-        );
-        await setDoc(categoryDocRef, { ...categoryData, items: updatedItems });
-        fetchCategories();
-      }
-    } catch (error) {
-      console.error("Error toggling stock: ", error);
-    }
+  // Öffnet das Modal zum Bearbeiten und füllt die Daten aus
+  const openEditModal = (category, product) => {
+    setIsEditing(true);
+    setCurrentEditIds({ catId: category.id, prodId: product.id });
+    setProductForm({
+      ...product,
+      category: category.category, // Kategorie-Name für die Suche mitschicken
+    });
+    setIsModalOpen(true);
   };
 
-  const handleAddProduct = async (e) => {
+  const handleFormSubmit = async (e) => {
     e.preventDefault();
     try {
       const categoryDoc = categories.find(
         (doc) =>
-          doc.category.toLowerCase() === newProduct.category.toLowerCase(),
+          doc.category.toLowerCase() === productForm.category.toLowerCase(),
       );
 
-      if (categoryDoc) {
-        const categoryDocRef = doc(db, "shopData", categoryDoc.id);
-        const updatedItems = [
-          ...categoryDoc.items,
-          { ...newProduct, id: Date.now() },
-        ];
-        await setDoc(categoryDocRef, { ...categoryDoc, items: updatedItems });
-        fetchCategories();
-        setNewProduct({
-          name: "",
-          imageUrl: "",
-          price: 0,
-          quantity: 1,
-          category: "",
-        });
-        setIsModalOpen(false);
-      } else {
+      if (!categoryDoc) {
         alert("Kategorie existiert nicht!");
+        return;
       }
+
+      const categoryDocRef = doc(db, "shopData", categoryDoc.id);
+      let updatedItems = [...categoryDoc.items];
+
+      if (isEditing) {
+        // Logik für Bearbeiten
+        updatedItems = updatedItems.map((item) =>
+          item.id === currentEditIds.prodId ? { ...productForm } : item,
+        );
+      } else {
+        // Logik für Neu Hinzufügen
+        updatedItems.push({ ...productForm, id: Date.now() });
+      }
+
+      await setDoc(categoryDocRef, { ...categoryDoc, items: updatedItems });
+      fetchCategories();
+      setIsModalOpen(false);
     } catch (error) {
-      console.error("Error adding product: ", error);
+      console.error("Fehler beim Speichern:", error);
+    }
+  };
+
+  const handleToggleStock = async (categoryId, productId, currentQuantity) => {
+    const categoryDocRef = doc(db, "shopData", categoryId);
+    const categoryDoc = await getDoc(categoryDocRef);
+    console.log("Kategorie ID:", categoryId); // Schau in die Browser-Konsole!
+    console.log("Produkt ID:", productId);
+
+    if (!categoryId) {
+      console.error("Fehler: categoryId ist undefined!");
+      return;
+    }
+    if (categoryDoc.exists()) {
+      const categoryData = categoryDoc.data();
+      const updatedItems = categoryData.items.map((item) =>
+        item.id === productId
+          ? { ...item, quantity: currentQuantity > 0 ? 0 : 1 }
+          : item,
+      );
+      await setDoc(categoryDocRef, { ...categoryData, items: updatedItems });
+      fetchCategories();
     }
   };
 
   const handleDeleteProduct = async (categoryId, productId) => {
-    if (!window.confirm("Dieses Produkt wirklich löschen?")) return;
-    try {
-      const categoryDocRef = doc(db, "shopData", categoryId);
-      const categoryDoc = await getDoc(categoryDocRef);
-      if (categoryDoc.exists()) {
-        const categoryData = categoryDoc.data();
-        const updatedItems = categoryData.items.filter(
-          (item) => item.id !== productId,
-        );
-        await setDoc(categoryDocRef, { ...categoryData, items: updatedItems });
-        fetchCategories();
-      }
-    } catch (error) {
-      console.error("Error deleting product: ", error);
+    if (!window.confirm("Produkt wirklich löschen?")) return;
+    const categoryDocRef = doc(db, "shopData", categoryId);
+    const categoryDoc = await getDoc(categoryDocRef);
+
+    if (categoryDoc.exists()) {
+      const categoryData = categoryDoc.data();
+      const updatedItems = categoryData.items.filter(
+        (item) => item.id !== productId,
+      );
+      await setDoc(categoryDocRef, { ...categoryData, items: updatedItems });
+      fetchCategories();
     }
   };
 
@@ -126,42 +157,32 @@ const AdminDashboard = () => {
     <div className="admin-dashboard">
       <header className="admin-header">
         <h1>Admin Dashboard</h1>
-        <div className="search-container">
-          <SearchBar
-            handleChange={handleSearchChange}
-            placeholder="Kategorie suchen..."
-          />
-        </div>
+        <SearchBar
+          handleChange={(e) => setSearchTerm(e.target.value)}
+          placeholder="Kategorie suchen..."
+        />
       </header>
 
       <nav className="admin-tabs">
-        <button
-          className={activeTab === "allProducts" ? "active" : ""}
-          onClick={() => setActiveTab("allProducts")}
-        >
-          Produkte
-        </button>
-        <button
-          className={activeTab === "priceLists" ? "active" : ""}
-          onClick={() => setActiveTab("priceLists")}
-        >
-          Preislisten
-        </button>
-        <button
-          className={activeTab === "carouselImages" ? "active" : ""}
-          onClick={() => setActiveTab("carouselImages")}
-        >
-          Bilder
-        </button>
+        {["allProducts", "priceLists", "carouselImages"].map((tab) => (
+          <button
+            key={tab}
+            className={activeTab === tab ? "active" : ""}
+            onClick={() => setActiveTab(tab)}
+          >
+            {tab === "allProducts"
+              ? "Produkte"
+              : tab === "priceLists"
+                ? "Preislisten"
+                : "Bilder"}
+          </button>
+        ))}
       </nav>
 
       <div className="admin-content">
         {activeTab === "allProducts" && (
           <>
-            <button
-              className="add-main-button"
-              onClick={() => setIsModalOpen(true)}
-            >
+            <button className="add-main-button" onClick={openAddModal}>
               + Produkt hinzufügen
             </button>
 
@@ -198,14 +219,22 @@ const AdminDashboard = () => {
                             <span className="slider"></span>
                           </label>
                         </div>
-                        <button
-                          className="delete-btn"
-                          onClick={() =>
-                            handleDeleteProduct(category.id, product.id)
-                          }
-                        >
-                          Löschen
-                        </button>
+                        <div className="card-actions">
+                          <button
+                            className="edit-btn"
+                            onClick={() => openEditModal(category, product)}
+                          >
+                            Bearbeiten
+                          </button>
+                          <button
+                            className="delete-btn"
+                            onClick={() =>
+                              handleDeleteProduct(category.id, product.id)
+                            }
+                          >
+                            Löschen
+                          </button>
+                        </div>
                       </div>
                     </div>
                   ))}
@@ -214,7 +243,6 @@ const AdminDashboard = () => {
             ))}
           </>
         )}
-
         {activeTab === "priceLists" && <AdminPriceList />}
         {activeTab === "carouselImages" && <AdminCarouselImages />}
       </div>
@@ -222,43 +250,48 @@ const AdminDashboard = () => {
       {isModalOpen && (
         <div className="modal-overlay">
           <div className="modal-card">
-            <h2>Neues Produkt</h2>
-            <form onSubmit={handleAddProduct}>
+            <h2>{isEditing ? "Produkt bearbeiten" : "Neues Produkt"}</h2>
+            <form onSubmit={handleFormSubmit}>
+              <label>Name</label>
               <input
                 type="text"
                 name="name"
-                value={newProduct.name}
-                onChange={handleChange}
-                placeholder="Name"
+                value={productForm.name}
+                onChange={handleInputChange}
                 required
               />
+
+              <label>Bild URL</label>
               <input
                 type="text"
                 name="imageUrl"
-                value={newProduct.imageUrl}
-                onChange={handleChange}
-                placeholder="Bild URL"
+                value={productForm.imageUrl}
+                onChange={handleInputChange}
                 required
               />
+
+              <label>Preis (intern)</label>
               <input
                 type="number"
                 name="price"
-                value={newProduct.price}
-                onChange={handleChange}
-                placeholder="Preis"
+                value={productForm.price}
+                onChange={handleInputChange}
                 required
               />
+
+              <label>Kategorie</label>
               <input
                 type="text"
                 name="category"
-                value={newProduct.category}
-                onChange={handleChange}
-                placeholder="Kategorie (z.B. CASAMORATI)"
+                value={productForm.category}
+                onChange={handleInputChange}
                 required
+                placeholder="z.B. CASAMORATI"
               />
+
               <div className="modal-actions">
                 <button type="submit" className="save-btn">
-                  Speichern
+                  {isEditing ? "Aktualisieren" : "Speichern"}
                 </button>
                 <button
                   type="button"
